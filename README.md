@@ -1,6 +1,6 @@
 ## Project: Lập trình web
 
-Đề tài của đồ án: Làm ứng dụng web xem phim trực tuyến, lấy ý tưởng dựa trên các nền tảng nổi tiếng như: extflix, apple TV+, Vieon,...
+Đề tài của đồ án: Làm ứng dụng web xem phim trực tuyến, lấy ý tưởng dựa trên các nền tảng nổi tiếng như: Nextflix, apple TV+, Vieon,...
 
 ## Used APIs, Libs
 
