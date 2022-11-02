@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="home Page"
+		template="/WEB-INF/views/templates/home.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/templates/layouts/header.jsp"></put-attribute>
+		<put-attribute name="menu"
+			value="/WEB-INF/views/templates/layouts/menu.jsp"></put-attribute>
+		<put-attribute name="body"></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/templates/layouts/footer.jap"></put-attribute>
+	</definition>
+	<!-- Trang chủ -->
+	<definition name="page" extends="homePage">
+		<put-attribute name="body"
+			value="/WEB-INF/views/content.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
