@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="asserts/css/style.css">
+    <title>Movies</title>
+</head>
+
+<body>
+
+    </section>
+    <!--SIDE BAR-->
+    <section id="sidebar">
+        <a href="#" class="brand"><img src="./asserts/img/Logo.png" alt="">VPMovie</a>
+        <ul class="side-menu">
+            <li><a href="./Dashboard.html" class=""><i class="las la-home icon"></i>Dashboard</a></li>
+            <li class="divider">Phim</li>
+            <li>
+            <li><a href="./movies.html" class="active"><i class="las la-play-circle icon"></i>Danh sách phim</a></li>
+            <li>
+                <a href="#"><i class="las la-list icon"></i></i>Phân loại <i
+                        class="las la-angle-left icon-right icon"></i></a>
+                <ul class="side-dropdown">
+                    <li><a href="#"><i class="las la-at icon"></i> Thể loại</a></li>
+                    <li><a href="#"><i class="las la-link icon"></i> Tags</a></li>
+                    <li><a href="#"><i class="las la-globe icon"></i> Khu vực</a></li>
+                    <li><a href="#"><i class="lab la-gratipay icon"></i> Diễn viên</a></li>
+                    <li><a href="#"><i class="lab la-odnoklassniki-square icon"></i> Đạo diễn</a></li>
+                    <li><a href="#"><i class="lab la-connectdevelop icon"></i> Studio</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="las la-info-circle icon"></i></i>Phim lỗi</a></li>
+
+            </li>
+
+            <li class="divider">Tùy chỉnh</li>
+            <li>
+            <li>
+                <a href="#"><i class="las la-paint-brush icon"></i>Giao diện <i
+                        class="las la-angle-left icon-right icon"></i></a>
+                <ul class="side-dropdown">
+                    <li><a href="#">Chủ đề</a></li>
+                    <li><a href="#">Menu</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="las la-cog icon"></i></i>Cài đặt <i
+                        class="las la-angle-left icon-right icon"></i></a>
+                <ul class="side-dropdown">
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Seo</a></li>
+                    <li><a href="#">Jwplayer</a></li>
+                    <li><a href="#">Khác</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="las la-map icon"></i></i>Sitemap</a></li>
+
+            </li>
+
+            <li class="divider">Mở rộng</li>
+            <li>
+            <li><a href="#"><i class="las la-play-circle icon"></i>Crawler</a></li>
+            </li>
+
+            <li class="divider">Administration</li>
+            <li>
+            <li><a href="#"><i class="las la-users icon"></i>Authentication</a></li>
+            </li>
+        </ul>
+
+    </section>
+    <!--SIDE BAR-->
+
+    <!-- CONTENT -->
+    <section id="content">
+        <!-- NAVBAR -->
+        <nav>
+            <i class="las la-bars toggle-sidebar"></i>
+            <span class="divider"></span>
+            <div class="profile">
+                <img src="./asserts/img/admin.png" alt="">
+                <ul class="profile-link">
+                    <li><a href="#"><i class="las la-user-circle icon"></i> Profile</a></li>
+                    <li><a href="#"><i class="las la-user-cog icon"></i> Settings</a></li>
+                    <li><a href="#"><i class="las la-sign-out-alt icon"></i> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- NAVBAR -->
+
+        <!-- MAIN -->
+        <main>
+            <h1 class="title">Movies </h1>
+            <ul class="breadcrumbs">
+                <li><a href="#">Home</a></li>
+                <li class="divider">/</li>
+                <li><a href="#">Movie</a></li>
+                <li class="divider">/</li>
+                <li><a href="#" class="active">List</a></li>
+
+            </ul>
+
+        </main>
+        <!-- MAIN -->
+
+        <!-- DEFAULT BOX -->
+        <div class="container-fluid">
+            <div class="row function-bar">
+                <p class="lead">
+                    <a href="#" class="btn btn-primary"><i class="las la-plus"></i> Add movie</a>
+                </p>
+
+            </div>
+            <div class="row filters">
+                <i class="las la-filter"></i>
+                <div class="bp-filter">
+                    <ul class="filter-navbar">
+                        <li>
+                            <select class="select" name="status" id="status">
+                                <option disabled selected>Tình trạng</option>
+                                <option value="Trailer">TRAILER</option>
+                                <option value="Đang chiếu">ĐANG CHIẾU</option>
+                                <option value="Hoàn thành">HOÀN THÀNH</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select class="select" name="type" id="type">
+                                <option disabled selected>Định dạng</option>
+                                <option value="Phim lẻ">PHIM LẺ</option>
+                                <option value="Phim bộ">PHIM BỘ</option>
+
+                            </select>
+                        </li>
+                        <li>
+                            <select class="select" name="category" id="category">
+                                <option disabled selected>Thể loại</option>
+                                <option value="Tình cảm">TÌNH CẢM</option>
+                                <option value="Chính kịch">CHÍNH KỊCH</option>
+                                <option value="Hành động">HÀNH ĐỘNG</option>
+                                <option value="Viễn tưởng">VIỄN TƯỞNG</option>
+                                <option value="Khoa học">KHOA HỌC</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select class="select" name="region" id="region">
+                                <option disabled selected>Quốc gia</option>
+                                <option value="Thổ Nhĩ Kỳ">THỔ NHĨ KỲ</option>
+                                <option value="Trung Quốc">TRUNG QUỐC</option>
+                                <option value="Nhật Bản">NHẬT BẢN</option>
+                                <option value="Hàn Quốc">HÀN QUỐC</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class>
+                <div class="table">
+                    <table class="crud-table">
+                        <thead>
+                            <tr>
+                                <th class="p-12">Thông tin</th>
+                                <th>Thumbnail</th>
+                                <th>Thể loại</th>
+                                <th>Khu vực</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="td-info">
+                                    <div>
+                                        <div class="text-primary">
+                                            "007: Riêng Cho Đôi Mắt Em "
+                                            <span class="text-success">[1981]</span>
+                                        </div>
+                                        <div class="text-muted">
+                                            <small>
+                                                "(007: For Your Eyes Only)"
+                                                <span class="text-danger">[Full]</span>
+                                            </small>
+                                        </div>
+                                        <div class="badge bg-secondary fw-normal">Phim lẻ</div>
+                                        <div class="badge bg-success fw-normal">Hoàn thành</div>
+
+                                    </div>
+                                </td>
+                                <td class="p-12">
+                                    <span>
+                                        <a
+                                            href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+                                            <img src="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg"
+                                                alt="">
+                                        </a>
+
+                                    </span>
+                                </td>
+                                <td class="p-12">
+                                    <span>Hành Động, Hình Sự, Phiêu Lưu</span>
+                                </td>
+                                <td class="p-12">Anh</td>
+                                <td class="p-12">
+                                    <div class="actions">
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-eye"></i> Preview</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-edit"></i> Edit</a>
+                                        </p>
+                                        <p class="lead">
+                                            <a href="#" class="btn btn-primary"><i class="las la-trash-alt"></i>
+                                                Delete</a>
+                                        </p>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="page-nums row">
+                <div class="table-length ">
+                    <ul class="filter-navbar">
+                        <select class="select" name="table-length" id="table-length">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="-1">All</option>
+                        </select>
+                        entries per page
+                    </ul>
+
+
+
+                </div>
+                <div class="table-num-page">
+
+                </div>
+            </div>
+        </div>
+        <!-- DEFAULT BOX -->
+    </section>
+    <!-- CONTENT -->
+
+    <script src="asserts/js/script.js"></script>
+</body>
+
+</html>
