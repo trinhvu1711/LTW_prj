@@ -116,7 +116,7 @@ a {
     margin: 15px 0;
 }
 
-div.remember {
+.remember {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -129,7 +129,7 @@ div.remember {
 }
 
 
-div.remember input {
+.remember input {
     height: 13px;
     width: 13px;
     margin: 0 5px;
