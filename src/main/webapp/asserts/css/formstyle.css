@@ -116,7 +116,7 @@ a {
     margin: 15px 0;
 }
 
-.remember {
+div.remember {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -129,12 +129,10 @@ a {
 }
 
 
-.remember input {
-
+div.remember input {
     height: 13px;
     width: 13px;
     margin: 0 5px;
-
 }
 
 a.forgot {
