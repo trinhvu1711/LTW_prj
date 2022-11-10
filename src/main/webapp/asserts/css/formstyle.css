@@ -116,10 +116,33 @@ a {
     margin: 15px 0;
 }
 
+.remember {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background: none;
+    transition: .3s;
+    height: auto;
+    font-size: 14px;
+}
+
+
+.remember input {
+
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+
+}
+
 a.forgot {
     padding-bottom: 3px;
     border-bottom: 2px solid #EEE;
 }
+
+
 
 button {
     border-radius: 20px;
