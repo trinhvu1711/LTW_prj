@@ -54,6 +54,9 @@
 				<div class="infield">
 					<input type="password" placeholder="Password" /> <label></label>
 				</div>
+				 <div class="remember">
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </div>
 				<a href="#" class="forgot">Forgot your password?</a>
 				<button>Sign In</button>
 			</form>
