@@ -87,7 +87,7 @@
 							Profile</a></li>
 					<li><a href="#"><i class="las la-user-cog icon"></i>
 							Settings</a></li>
-					<li><a href="#"><i class="las la-sign-out-alt icon"></i>
+					<li><a href="logout"><i class="las la-sign-out-alt icon"></i>
 							Logout</a></li>
 				</ul>
 			</div>
@@ -107,10 +107,10 @@
 		</main>
 
 		<div class="jumbotron">
-			<h1>Welcome!</h1>
+			<h1>Hello Admin, Welcome!</h1>
 			<p>Sử dụng sidebar bên trái để tạo, chỉnh sửa hoặc xóa.</p>
 			<p class="lead">
-				<a href="#" class="btn btn-primary">Logout</a>
+				<a href="logout" class="btn btn-primary">Logout</a>
 			</p>
 		</div>
 		<!-- MAIN -->

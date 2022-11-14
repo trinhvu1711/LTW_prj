@@ -72,12 +72,12 @@ h1 {
     height: 40px;
     width: 40px;
 }
-
+ 	
 .social-container a:hover {
     opacity: 0.8;
 }
 
-span {
+.container>span {
     font-size: 12px;
 }
 
@@ -140,7 +140,7 @@ a.forgot {
     padding-bottom: 3px;
     border-bottom: 2px solid #EEE;
 }
-
+	
 
 
 button {
@@ -305,6 +305,7 @@ p {
 .btnScaled {
     animation: scaleBtn .6s;
 }
+
 
 @keyframes scaleBtn {
     0% {
