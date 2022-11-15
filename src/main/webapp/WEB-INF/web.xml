@@ -53,4 +53,15 @@
     <url-pattern>/DashboardServlet</url-pattern>
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MovieServlet</display-name>
+    <servlet-name>MovieServlet</servlet-name>
+    <servlet-class>controller.MovieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieServlet</servlet-name>
+    <url-pattern>/MovieServlet</url-pattern>
+    <url-pattern>/movie</url-pattern>
+  </servlet-mapping>
 </web-app>

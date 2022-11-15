@@ -64,11 +64,11 @@ public class LoginServlet extends HttpServlet {
 		response.addCookie(crem);
 
 		UserDAO ud = new UserDAO();
-		System.out.println(user);
-		System.out.println(password);
+		System.out.println("user " +user);
+		System.out.println("pass "+password);
 		User u = ud.get(user, password);
 //		System.out.println(u);
-		if (u == null) {
+		if (u == null || user =="" || password == "") {
 			request.setAttribute("msg", "signinError");
 			request.getRequestDispatcher("form.jsp").forward(request, response);
 		} else {

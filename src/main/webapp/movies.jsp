@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,6 +168,76 @@
 
 							</tr>
 						</thead>
+						
+						<c:forEach items="${requestScope.list}" var="m">
+							<c:set var="id" value="m.id"></c:set>
+							<tbody>
+								<tr>
+									<td class="td-info">
+										<div>
+											<div class="text-primary">
+												${m.name} <span class="text-success">${m.publish_year}</span>
+											</div>
+											<div class="text-muted">
+												<small>${m.origin_name}</small>
+											</div>
+
+											<c:if test="${m.type.type_name == 'single'}">
+												<c:set var="type" value="Phim lẻ"></c:set>
+												<c:set var="type_class" value="bg-secondary"></c:set>
+											</c:if>
+											<c:if test="${m.type.type_name == 'series'}">
+												<c:set var="type" value="Phim bộ"></c:set>
+												<c:set var="type_class" value="bg-primary"></c:set>
+											</c:if>
+											<c:if test="${m.status.status_name == 'trailer'}">
+												<c:set var="status" value="Trailer"></c:set>
+												<c:set var="status_class" value="bg-warning"></c:set>
+											</c:if>
+											<c:if test="${m.status.status_name == 'ongoing'}">
+												<c:set var="status" value="Đang chiếu"></c:set>
+												<c:set var="status_class" value="bg-info"></c:set>
+											</c:if>
+											<c:if test="${m.status.status_name == 'completed'}">
+												<c:set var="status" value="Hoàn thành"></c:set>
+												<c:set var="status_class" value="bg-success"></c:set>
+											</c:if>
+
+											<div class="badge ${type_class} fw-normal">${type}</div>
+											<div class="badge ${status_class} fw-normal">${status}</div>
+
+										</div>
+									</td>
+									<td class="p-12"><span> <a
+											href="https://default.ophimcms.com/storage/images/007-rieng-cho-doi-mat-em/007-rieng-cho-doi-mat-em-thumb.jpg">
+												<img src="${m.thumb_url}" alt="">
+										</a>
+
+									</span></td>
+									<td class="p-12"><span>Hành Động, Hình Sự, Phiêu
+											Lưu</span></td>
+									<td class="p-12">Anh</td>
+									<td class="p-12">
+										<div class="actions">
+											<p class="lead">
+												<a href="#" class="btn btn-primary"><i
+													class="las la-eye"></i> Preview</a>
+											</p>
+											<p class="lead">
+												<a href="#" class="btn btn-primary"><i
+													class="las la-edit"></i> Edit</a>
+											</p>
+											<p class="lead">
+												<a href="#" class="btn btn-primary"><i
+													class="las la-trash-alt"></i> Delete</a>
+											</p>
+
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+
 						<tbody>
 							<tr>
 								<td class="td-info">
@@ -215,6 +286,7 @@
 
 							</tr>
 						</tbody>
+
 						<tbody>
 							<tr>
 								<td class="td-info">

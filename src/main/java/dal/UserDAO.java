@@ -79,21 +79,14 @@ public class UserDAO extends DBContext {
 
 	public static void main(String[] args) {
 		UserDAO ud = new UserDAO();
-
-//		System.out.println(list.size());
-//		for (User u: list) {
+		User u = ud.get(null, null);
+		System.out.println(u == null);
+//		ud.signup("sada", "longvu1711@gmail.com", "123");
+//		List<User> list = ud.getAll();
+//		for (User u : list) {
 //			System.out.println(u.getUsername());
 //			System.out.println(u.getPassword());
 //			System.out.println(u.getRole());
 //		}
-//		User u = ud.get("l@gmail.com", "123");
-//		System.out.println(u.getUsername());
-//		ud.signup("sada", "longvu1711@gmail.com", "123");
-		List<User> list = ud.getAll();
-		for (User u : list) {
-			System.out.println(u.getUsername());
-			System.out.println(u.getPassword());
-			System.out.println(u.getRole());
-		}
 	}
 }
