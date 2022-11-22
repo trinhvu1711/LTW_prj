@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/addCategory.jsp=UTF-8
+encoding//src/main/webapp/addMovie.jsp=UTF-8
+encoding//src/main/webapp/category.jsp=UTF-8
 encoding//src/main/webapp/dashboard.jsp=UTF-8
 encoding//src/main/webapp/movies.jsp=UTF-8
 encoding/<project>=UTF-8
