@@ -6,17 +6,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Region;
 import model.Status;
+import model.Type;
 
 public class StatusDAO extends DBContext {
-	public List<Status> getall(){
+	public List<Status> getall() {
 		List<Status> list = new ArrayList<>();
 		String sql = "select * from status";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
-				Status s = new Status(rs.getString("status_id"), rs.getString("status_name"));
+				Status s = new Status(rs.getInt("id"), rs.getString("name"), rs.getString("slug"));
 				list.add(s);
 			}
 		} catch (SQLException e) {
@@ -24,21 +26,47 @@ public class StatusDAO extends DBContext {
 		}
 		return list;
 	}
-	
-	public Status get(String id) {
-		String sql = "select * from status where status_id = ?";
-		Status s = null;
+
+	public List<Status> getallById(int[] id) {
+		List<Status> list = new ArrayList<>();
+		String sql = "select * from status where id =?";
+		for (int i : id) {
+			try {
+				PreparedStatement st = connection.prepareStatement(sql);
+				st.setInt(1, i);
+				ResultSet rs = st.executeQuery();
+				while (rs.next()) {
+					Status s = new Status(rs.getInt("id"), rs.getString("name"), rs.getString("slug"));
+					list.add(s);
+				}
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+		}
+		return list;
+	}
+
+	public Status getById(int id) {
+		String sql = "select * from status where id =?";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
-			st.setString(1, id);
+			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
-				s = new Status(rs.getString("status_id"), rs.getString("status_name"));
+				Status t = new Status(rs.getInt("id"), rs.getString("name"), rs.getString("slug"));
+				return t;
 			}
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
-		return s;
+
+		return null;
 	}
 	
+	public static void main(String[] args) {
+		List<Status> list = new StatusDAO().getall();
+		for (Status s : list) {
+			System.out.println(s);
+		}
+	}
 }

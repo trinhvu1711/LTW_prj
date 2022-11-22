@@ -1,0 +1,95 @@
+.heading {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.heading .title {
+	margin-right: 10px;
+}
+
+.heading h4 {
+	font-weight: 400;
+}
+
+.pd-20 {
+	padding-top: 20px;
+}
+
+.mt-15 {
+	margin-top: 15px;
+}
+
+.mt-8 {
+	margin-top: 8px;
+}
+
+input[type="text"] {
+	background-color: #fff;
+	border: 1px solid rgba(0, 40, 100, .12);
+	border-radius: 3px;
+	color: #506690;
+	display: block;
+	font-size: .9375rem;
+	font-weight: 400;
+	height: 22px;
+	line-height: 1.6;
+	padding: 6px 0px;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	width: 100%;
+}
+
+.form-option {
+	background-color: #fff;
+	border: 1px solid rgba(0, 40, 100, .12);
+	border-radius: 3px;
+	color: #506690;
+	display: block;
+	font-size: .9375rem;
+	font-weight: 400;
+	height: 2.375rem;
+	line-height: 1.6;
+	padding: 0.375rem 0.75rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	width: 100%;
+}
+
+.form-option, input[type=text]:focus {
+	background-color: #fff;
+	border-color: #9080f1;
+	box-shadow: 0 0 0 2px #e1dcfb;
+	color: #495057;
+	outline: 0;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.card-heading {
+	padding: 20px;
+	border: 1px solid rgba(0, 40, 100, .12);
+}
+
+.card-body {
+	border: 1px solid rgba(0, 40, 100, .12);
+	padding: 20px;
+	border-top: none;
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+}
+
+.card-body .card-item {
+	width: 100%;
+}
+
+.card-footer {
+	display: flex;
+	padding: 20px;
+	border: 1px solid rgba(0, 40, 100, .12);
+	border-top: none;
+	gap: 10px;
+}

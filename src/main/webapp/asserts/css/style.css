@@ -61,6 +61,7 @@ body {
   padding: 12px;
 }
 
+
 .container-fluid {
   padding: 0 30px;
 }
@@ -369,11 +370,41 @@ main .breadcrumbs li.divider {
   vertical-align: middle;
 }
 
+.btn:hover {
+  color: #495057;
+  text-decoration: none;
+}
+
 .btn-primary {
   background: var(--bs-purple);
   border-color: var(--bs-purple);
   color: var(--bs-white);
 
+}
+
+.btn-primary:hover {}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+.btn-teal {
+  background: var(--bs-teal);
+  border-color: var(--bs-teal);
+  color: var(--bs-white);
+}
+
+.btn-gray {
+  background: var(--bs-gray);
+  border-color: var(--bs-gray);
+  color: var(--bs-white);
+}
+
+.btn-warning {
+  background: var(--bs-warning);
+  border-color: var(--bs-warning);
+  color: var(--bs-white);
 }
 
 .btn:hover {
@@ -477,10 +508,12 @@ main .breadcrumbs li.divider {
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
+ 
 }
 
 .bg-primary {
   background: #7c69ef;
+  color: #fff;
 }
 
 .bg-secondary {
@@ -494,10 +527,12 @@ main .breadcrumbs li.divider {
 
 .bg-info {
   background: #467fd0;
+  color: #fff;
 }
 
 .bg-warning {
   background: #ffc107;
+  color: #fff;
 }
 
 .fw-normal {
@@ -573,6 +608,10 @@ main .breadcrumbs li.divider {
 
 .actions .lead .btn {
   font-size: 14px;
+}
+
+.class-table {
+  width: 80%;
 }
 
 /* CRUD TABLE */

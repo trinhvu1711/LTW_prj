@@ -1,28 +1,47 @@
 package model;
 
 public class Type {
-	private String type_id;
-	private String type_name;
-	public Type(String id, String type_name) {
+	private int id;
+	private String name;
+	private String slug;
+	public Type() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Type(int id, String name, String slug) {
 		super();
-		this.type_id = id;
-		this.type_name = type_name;
+		this.id = id;
+		this.name = name;
+		this.slug = slug;
 	}
-	public String getId() {
-		return type_id;
+
+	public int getId() {
+		return id;
 	}
-	public void setId(String id) {
-		this.type_id = id;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getType_name() {
-		return type_name;
+
+	public String getName() {
+		return name;
 	}
-	public void setType_name(String type_name) {
-		this.type_name = type_name;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	public String getSlug() {
+		return slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+
 	@Override
 	public String toString() {
-		return "Type [type_id=" + type_id + ", type_name=" + type_name + "]";
+		return "Type [id=" + id + ", name=" + name + ", slug=" + slug + "]";
 	}
 	
 }

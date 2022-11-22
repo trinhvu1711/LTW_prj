@@ -1,27 +1,28 @@
-package controller;
+package controller.studio;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Movie;
+import model.Director;
+import model.Studio;
 
 import java.io.IOException;
-import java.util.List;
 
-import dal.MovieDAO;
+import dal.DirectorDao;
+import dal.StudioDao;
 
 /**
- * Servlet implementation class MovieServlet
+ * Servlet implementation class AddStudioServlet
  */
-public class MovieServlet extends HttpServlet {
+public class AddStudioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieServlet() {
+    public AddStudioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +31,30 @@ public class MovieServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MovieDAO md = new MovieDAO();
-		List<Movie> list = md.getAll();
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("movies.jsp").forward(request, response);
+		request.getRequestDispatcher("addStudio.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int id = (int) (Math.floor(Math.random()*89999)+10000);
+		String name =request.getParameter("name");
+		String slug =request.getParameter("slug");
+		String thumb_url =request.getParameter("thumb_url");
+		System.out.println(name);
+		System.out.println(slug);
+		try {
+			StudioDao cd = new StudioDao();
+			Studio c = cd.getById(id);
+			if (c == null) {
+				cd.add(new Studio(id, name, slug, thumb_url));
+				response.sendRedirect("studio");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 }

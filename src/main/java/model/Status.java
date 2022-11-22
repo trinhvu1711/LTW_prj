@@ -1,28 +1,39 @@
 package model;
 
 public class Status {
-	private String status_id;
-	private String status_name;
-	public Status(String status_id, String status_name) {
+	private int id;
+	private String name;
+	private String slug;
+	public Status() {
+		// TODO Auto-generated constructor stub
+	}
+	public Status(int id, String name, String slug) {
 		super();
-		this.status_id = status_id;
-		this.status_name = status_name;
+		this.id = id;
+		this.name = name;
+		this.slug = slug;
 	}
-	public String getStatus_id() {
-		return status_id;
+	public int getId() {
+		return id;
 	}
-	public void setStatus_id(String status_id) {
-		this.status_id = status_id;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getStatus_name() {
-		return status_name;
+	public String getName() {
+		return name;
 	}
-	public void setStatus_name(String status_name) {
-		this.status_name = status_name;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSlug() {
+		return slug;
+	}
+	public void setSlug(String slug) {
+		this.slug = slug;
 	}
 	@Override
 	public String toString() {
-		return "Status [status_id=" + status_id + ", status_name=" + status_name + "]";
+		return "Status [id=" + id + ", name=" + name + ", slug=" + slug + "]";
 	}
 	
 }	
