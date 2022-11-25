@@ -1,18 +1,18 @@
 package controller.movie;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Movie;
-import model.Region;
+
 
 import java.io.IOException;
 import java.util.List;
 
 import dal.MovieDAO;
-import dal.RegionDao;
+
 
 /**
  * Servlet implementation class MovieServlet

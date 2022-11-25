@@ -77,6 +77,34 @@ public class UserDAO extends DBContext {
 
 	}
 
+	public void updateProfile(User user, String nusername, String nname) {
+		String sql = "update member set username=?, name=? where username=? and password=?";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setString(1, nusername);
+			st.setString(2, nname);
+			st.setString(4, user.getPassword());
+			st.setString(3, user.getUsername());
+			st.executeUpdate();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void changePassword(User user) {
+		String sql = "update member set password =? where username =?";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setString(2, user.getUsername());
+			st.setString(1, user.getPassword());
+			st.executeUpdate();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		UserDAO ud = new UserDAO();
 		User u = ud.get(null, null);

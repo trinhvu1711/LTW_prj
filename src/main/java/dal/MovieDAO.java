@@ -106,26 +106,37 @@ public class MovieDAO extends DBContext {
 	}
 	
 	public void edit(Movie m) {
-		String sql = "update movie set id =?, name=?, origin_name=?, slug, content=?, thumb_url=?, poster_url=?, type_id=?, status_id=?, "
-				+ "episode_time=?, episode_current=?, episode_total=?, quality=?, language=?, publish_year=?)";
+		String sql = "update movie set name=?, origin_name=?, slug= ?, content=?, thumb_url=?, poster_url=?, type_id=?, status_id=?, "
+				+ "episode_time=?, episode_current=?, episode_total=?, quality=?, language=?, publish_year=? where id =?";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
-			st.setInt(1, m.getId());
-			st.setString(2, m.getName());
-			st.setString(3, m.getOrigin_name());
-			st.setString(4, m.getSlug());
-			st.setString(5, m.getContent());
-			st.setString(6, m.getThumb_url());
-			st.setString(7, m.getPoster_url());
-			st.setInt(8, m.getType().getId());
-			st.setInt(9, m.getStatus().getId());
+			st.setInt(15, m.getId());
+			st.setString(1, m.getName());
+			st.setString(2, m.getOrigin_name());
+			st.setString(3, m.getSlug());
+			st.setString(4, m.getContent());
+			st.setString(5, m.getThumb_url());
+			st.setString(6, m.getPoster_url());
+			st.setInt(7, m.getType().getId());
+			st.setInt(8, m.getStatus().getId());
 			
-			st.setString(10, m.getEpisode_time());
-			st.setString(11, m.getEpisode_current());
-			st.setString(12, m.getEpisode_total());
-			st.setString(13, m.getQuality());
-			st.setString(14, m.getLanguage());
-			st.setString(15, m.getPublish_year());
+			st.setString(9, m.getEpisode_time());
+			st.setString(10, m.getEpisode_current());
+			st.setString(11, m.getEpisode_total());
+			st.setString(12, m.getQuality());
+			st.setString(13, m.getLanguage());
+			st.setString(14, m.getPublish_year());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+	}
+	
+	public void delete(int id) {
+		String sql = "delete from movie where id =?";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setInt(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e);
@@ -137,6 +148,7 @@ public class MovieDAO extends DBContext {
 //		for (Movie m : list) {
 //			System.out.println(m.toString());
 //		}
-		System.out.println(new MovieDAO().get(893918));
+//		System.out.println(new MovieDAO().get(893918));
+		new MovieDAO().delete(456115);
 	}
 }

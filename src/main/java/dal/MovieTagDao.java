@@ -25,7 +25,7 @@ public class MovieTagDao extends DBContext {
 		}
 	}
 	public void deleteById(int id) {
-		String sql = "delete from movie_tag where id =?";
+		String sql = "delete from movie_tag where id_movie =?";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			st.setInt(1, id);
