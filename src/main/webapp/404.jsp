@@ -21,7 +21,7 @@
                Sorry, the page you're looking for doesn't exist. If you think something is broken, report a problem.
             </p>
             <div class="btns">
-               <a href="#">return home</a>
+               <a href="home">return home</a>
                <a href="login">return login page</a>
             </div>
          </div>

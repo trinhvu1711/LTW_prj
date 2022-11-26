@@ -19,7 +19,20 @@
 <link rel="stylesheet" href="./asserts/css/alert.css">
 </head>
 <body>
+	<c:if test="${msg == 'nullError'}">
+		<div class="alert alert-danger show	">
+			<span class="icon"> <i class="fa fa-times"></i>
+			</span>
+			<div class="text">
+				<strong>Lỗi</strong>
+				<p>Thông tin nhập chưa đầy đủ hoặc sai định dạng</p>
 
+			</div>
+			<div class="close">
+				<i class="fa fa-close"></i>
+			</div>
+		</div>
+	</c:if>
 	<c:if test="${requestScope.msg == 'signupError'}">
 		<div class="alert alert-danger show	">
 			<span class="icon"> <i class="fa fa-times"></i>
@@ -102,8 +115,8 @@
 					<input type="password" placeholder="Password" name="password" /> <label></label>
 				</div>
 				<div class="remember">
-					<input type="checkbox" checked="checked" name="remember" value="rem">Remember
-					me
+					<input type="checkbox" name="remember"
+						value="rem">Remember me
 				</div>
 				<a href="#" class="forgot">Forgot your password?</a>
 				<button type="submit">Sign In</button>

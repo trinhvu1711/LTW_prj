@@ -9,7 +9,8 @@
 <body>
 	day la trang home <br>
 	hello ${sessionScope.account.name} <br>
-	${sessionScope.account.username}
+	${sessionScope.account.username} <br>
+	${sessionScope.account.role} <br>
 	so nguoi truy cap: ${sessionScope.count} <br>
 </body>
 </html>

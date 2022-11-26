@@ -50,7 +50,7 @@ public class CookieFilter extends HttpFilter implements Filter {
 		if(user != null) {
 			session.setAttribute("COOKIE_CHECKED", "CHECKED");
 			chain.doFilter(request, response);
-			return;
+			return;	
 		}
 		String checked = (String) session.getAttribute("COOKIE_CHECKED");
 		if (checked  == null) {

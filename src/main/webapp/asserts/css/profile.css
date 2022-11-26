@@ -93,3 +93,6 @@ input[type="text"] {
 	border-top: none;
 	gap: 10px;
 }
+.alert{
+	background: var(--bs-light);
+}

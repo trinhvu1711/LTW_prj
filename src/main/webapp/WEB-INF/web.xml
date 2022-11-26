@@ -442,4 +442,49 @@
     <url-pattern>/ChangePasswordProfileServlet</url-pattern>
     <url-pattern>/changePasswordProfile</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>RoleFilter</display-name>
+    <filter-name>RoleFilter</filter-name>
+    <filter-class>filter.RoleFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <url-pattern>/RoleFilter</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>DashboardServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>MovieServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>StudioServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>TagServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>RegionServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>ActorServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>CatalogServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>CategoryServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>RoleFilter</filter-name>
+    <servlet-name>DirectorServlet</servlet-name>
+  </filter-mapping>
 </web-app>

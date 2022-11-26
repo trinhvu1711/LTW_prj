@@ -43,12 +43,11 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String user = request.getParameter("email");
 		String password = request.getParameter("password");
-		String rem = request.getParameter("rem");
-		
+		String rem = request.getParameter("remember");
+
 		Cookie cname = new Cookie("cname", user);
 		Cookie cpass = new Cookie("cpass", password);
 		Cookie crem = new Cookie("crem", rem);
-
 		if (rem != null) {
 			cname.setMaxAge(60 * 60 * 24 * 7);
 			cpass.setMaxAge(60 * 60 * 24 * 7);
@@ -58,17 +57,21 @@ public class LoginServlet extends HttpServlet {
 			cpass.setMaxAge(0);
 			crem.setMaxAge(0);
 		}
-		
+
 		response.addCookie(cname);
 		response.addCookie(cpass);
 		response.addCookie(crem);
 
 		UserDAO ud = new UserDAO();
-		System.out.println("user " +user);
-		System.out.println("pass "+password);
+		System.out.println("user " + user);
+		System.out.println("pass " + password);
 		User u = ud.get(user, password);
 //		System.out.println(u);
-		if (u == null || user =="" || password == "" || password == null) {
+		if (user == null || user == "" || password == "" || password == null) {
+			request.setAttribute("msg", "nullError");
+			request.getRequestDispatcher("form.jsp").forward(request, response);
+		}
+		if (u == null) {
 			request.setAttribute("msg", "signinError");
 			request.getRequestDispatcher("form.jsp").forward(request, response);
 		} else {

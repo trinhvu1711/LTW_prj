@@ -36,15 +36,17 @@ public class RoleFilter extends HttpFilter implements Filter {
 	}
 
 	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 * @see Filter#doFilter(ServletRequest	, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		User u = (User) session.getAttribute("account");
-		if(u == null || u.getRole() != 1) {
+		if(u!= null && u.getRole() != 1) {
 			req.getRequestDispatcher("404.jsp").forward(req, res);
+			chain.doFilter(request, response);
+			return;
 		}
 		chain.doFilter(request, response);
 	}
