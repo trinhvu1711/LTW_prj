@@ -4,7 +4,7 @@
 
 ## Used APIs, Libs
 
-Sử dụng HTML, JSP, CSS, JS, Servlet.
+Sử dụng HTML, JSP, CSS, JS, Servlet, JQuery.
 
 ## Achievement
 
