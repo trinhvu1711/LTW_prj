@@ -174,7 +174,7 @@
 						</thead>
 
 						<tbody>
-							<c:forEach items="${requestScope.list}" var="m">
+							<c:forEach items="${list}" var="m">
 								<c:set var="id" value="${m.id}"></c:set>
 								<c:url var="deleteUrl" value="deleteMovie">
 									<c:param name="id" value="${m.id}"></c:param>

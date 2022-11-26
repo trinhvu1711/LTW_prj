@@ -30,8 +30,8 @@ public class TagDao extends DBContext {
 	public List<Tag> getAllById(int[] id) {
 		List<Tag> list = new ArrayList<>();
 		String sql = "select * from Tag where id =?";
+		if (id.length > 0 && id != null)
 		for (int i : id) {
-
 			try {
 				PreparedStatement st = connection.prepareStatement(sql);
 				st.setInt(1, i);

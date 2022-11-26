@@ -27,7 +27,7 @@ public class MovieRegionDao extends DBContext {
 	}
 
 	public void deleteById(int id) {
-		String sql = "delete from movie_region where id =?";
+		String sql = "delete from movie_region where id_movie =?";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			st.setInt(1, id);

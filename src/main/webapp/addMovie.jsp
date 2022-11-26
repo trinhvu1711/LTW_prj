@@ -11,10 +11,15 @@
 			<link rel="stylesheet" href="asserts/css/ckeditor.css">
 			<link rel="stylesheet" href="asserts/css/style.css">
 			<link rel="stylesheet" href="asserts/css/add.css">
+			<link rel="stylesheet" href="./asserts/css/alert.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 			<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 			<script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
+			<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 			<title>Movies</title>
 		</head>
 
@@ -124,7 +129,19 @@
 
 				</main>
 				<!-- MAIN -->
-
+				<c:if test="${requestScope.msg == 'errorValue'}">
+					<div class="alert alert-danger show	">
+						<span class="icon"> <i class="fa fa-times"></i>
+						</span>
+						<div class="text">
+							<strong>Lỗi</strong>
+							<p>Vui lòng nhập đầy đủ thông tin và đúng định dạng</p>
+						</div>
+						<div class="close">
+							<i class="fa fa-close"></i>
+						</div>
+					</div>
+				</c:if>
 				<!-- DEFAULT BOX -->
 				<div class="nav-tab">
 					<div class="tab">
@@ -390,6 +407,25 @@
 					This.closest('tr').remove();
 				}
 			</script>
+			<script type="text/javascript">
+	let alert_close_icons = document.querySelectorAll('.alert>.close');
+	if(alert_close_icons)
+	{
+	  alert_close_icons.forEach((alert_close_icon)=>{
+	    alert_close_icon.addEventListener('click', function()
+	    {
+	      this.closest('.alert').classList.add('close');
+	      
+	      this.closest('.alert').addEventListener('transitionend', function(event){
+	        if(event.propertyName=='transform')
+	        {
+	          this.remove();
+	        }
+	      });
+	    });
+	  });
+	}
+    </script>
 		</body>
 
 		</html>

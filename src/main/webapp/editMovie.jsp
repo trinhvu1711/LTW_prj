@@ -13,6 +13,11 @@
 <link rel="stylesheet" href="asserts/css/ckeditor.css">
 <link rel="stylesheet" href="asserts/css/style.css">
 <link rel="stylesheet" href="asserts/css/add.css">
+<link rel="stylesheet" href="./asserts/css/alert.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link
@@ -26,6 +31,7 @@
 </head>
 
 <body>
+
 	</section>
 	<!--SIDE BAR-->
 	<section id="sidebar">
@@ -116,7 +122,7 @@
 			<div class="heading">
 				<h1 class="title">Movies</h1>
 				<h4>
-					Add movie. <a href="">Back to all movies</a>
+					Edit movie. <a href="movie">Back to all movies</a>
 				</h4>
 			</div>
 			<ul class="breadcrumbs">
@@ -130,7 +136,19 @@
 
 		</main>
 		<!-- MAIN -->
-
+		<c:if test="${requestScope.msg == 'errorValue'}">
+			<div class="alert alert-danger show	">
+				<span class="icon"> <i class="fa fa-times"></i>
+				</span>
+				<div class="text">
+					<strong>Lỗi</strong>
+					<p>Vui lòng nhập đầy đủ thông tin và đúng định dạng</p>
+				</div>
+				<div class="close">
+					<i class="fa fa-close"></i>
+				</div>
+			</div>
+		</c:if>
 		<!-- DEFAULT BOX -->
 		<div class="nav-tab">
 			<div class="tab">
@@ -144,10 +162,13 @@
 				<button class="tablinks" onclick="openCity(event, 'khac')">Khác</button>
 			</div>
 			<c:set var="m" value="${requestScope.m}"></c:set>
-			<form action="addMovie" method="post">
+			<form action="editMovie" method="post">
 				<div id="thong-tin-phim" class="tabcontent">
 					<div class="film-info">
 						<div class="form-group mt-15">
+
+							<input type="hidden" name="id" value="${m.id}">
+
 							<div class="form-item">
 								<label for="">Tên phim</label> <input type="text" name="name"
 									placeholder=" Tên" value="${m.name}">
@@ -341,7 +362,7 @@
 									</tr>
 								</thead>
 								<tbody id="table-body">
-										<c:forEach items="${m.getEpisodes()}" var="e">
+									<c:forEach items="${m.getEpisodes()}" var="e">
 										<tr>
 											<td><input type="text" value=" ${e.name}"
 												name="episode_name"></td>
@@ -448,6 +469,25 @@
 					This.closest('tr').remove();
 				}
 			</script>
+	<script type="text/javascript">
+	let alert_close_icons = document.querySelectorAll('.alert>.close');
+	if(alert_close_icons)
+	{
+	  alert_close_icons.forEach((alert_close_icon)=>{
+	    alert_close_icon.addEventListener('click', function()
+	    {
+	      this.closest('.alert').classList.add('close');
+	      
+	      this.closest('.alert').addEventListener('transitionend', function(event){
+	        if(event.propertyName=='transform')
+	        {
+	          this.remove();
+	        }
+	      });
+	    });
+	  });
+	}
+    </script>
 </body>
 
 </html>

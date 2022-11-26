@@ -1,29 +1,25 @@
-package controller.movie;
+package controller.home;
 
 import jakarta.servlet.ServletException;
-
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Movie;
-
+import jakarta.servlet.http.HttpSession;
+import model.User;
 
 import java.io.IOException;
-import java.util.List;
-
-import dal.MovieDAO;
-
 
 /**
- * Servlet implementation class MovieServlet
+ * Servlet implementation class HomeServlet
  */
-public class MovieServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieServlet() {
+    public HomeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +28,16 @@ public class MovieServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MovieDAO md = new MovieDAO();
-		List<Movie> list = md.getAll();
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("movies.jsp").forward(request, response);
+		int count = (int) request.getSession().getAttribute("c");
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("account");
+		if (u == null) {
+			response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
+		request.setAttribute("account", u);
+		request.getSession().setAttribute("count", count);
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	/**

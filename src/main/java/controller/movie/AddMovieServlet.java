@@ -1,7 +1,6 @@
 package controller.movie;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -76,7 +75,8 @@ public class AddMovieServlet extends HttpServlet {
 		List<Status> status = cd.getall();
 		TypeDAO typedao = new TypeDAO();
 		List<Type> type = typedao.getAll();
-
+		String msg = request.getParameter("msg");
+		request.setAttribute("msg", msg);
 		request.setAttribute("r", r);
 		request.setAttribute("c", c);
 		request.setAttribute("d", d);
@@ -95,8 +95,8 @@ public class AddMovieServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = (int) (Math.floor(Math.random() * 899999) + 100000);
-		String name = request.getParameter("name");
-		String origin_name = request.getParameter("origin_name");
+		
+		boolean ok = true;
 		String slug = request.getParameter("slug");
 		String poster = request.getParameter("poster");
 		String thumb = request.getParameter("thumb");
@@ -123,39 +123,75 @@ public class AddMovieServlet extends HttpServlet {
 		String[] episodeName = request.getParameterValues("episode_name");
 		String[] episodeSlug = request.getParameterValues("episode_slug");
 		String[] link = request.getParameterValues("link");
-		if (type_raw == null || status_raw == null || category_raw.length == 0 || region_raw.length == 0
-				|| actor_raw.length == 0 || director_raw.length == 0 || tag_raw.length == 0 || studio_raw.length == 0)
+		try {
+			String name = request.getParameter("name");
+			String origin_name = request.getParameter("origin_name");
+			
+			int type_id = 0, status_id = 0;
+			
+			if (name == null || name =="" || origin_name == null || origin_name =="") {
+				String url = "AddMovieServlet?msg=errorValue";
+				response.sendRedirect(url);
+				return;
+			}
+			
 			try {
-				int type_id = Integer.parseInt(type_raw);
-				int status_id = Integer.parseInt(status_raw);
-				int[] category = toIntArr(category_raw);
-				int[] region = toIntArr(region_raw);
-				int[] director = toIntArr(director_raw);
-				int[] tag = toIntArr(tag_raw);
-				int[] studio = toIntArr(studio_raw);
-				int[] actor = toIntArr(actor_raw);
-				List<Category> categories = new CategoryDAO().getAllById(category);
-				List<Region> regions = new RegionDao().getAllById(region);
-				List<Director> directors = new DirectorDao().getAllById(director);
-				List<Tag> tags = new TagDao().getAllById(tag);
-				List<Studio> studios = new StudioDao().getAllById(studio);
-				List<Actor> actors = new ActorDao().getAllById(actor);
+				type_id = Integer.parseInt(type_raw);
+				status_id = Integer.parseInt(status_raw);
+			} catch (Exception e) {
+				ok = false;
+			}
 
-				Type type = new TypeDAO().getById(type_id);
-				Status status = new StatusDAO().getById(status_id);
-
+			Type type = new TypeDAO().getById(type_id);
+			Status status = new StatusDAO().getById(status_id);
+			
+			if (type == null || status == null)
+				ok = false;
+			if (ok) {
 				Movie m = new Movie(id, name, origin_name, slug, content, thumb, type, status, episode_time,
 						episode_current, episode_total, quality, language, publish_year);
+
+				if (category_raw != null) {
+					int[] category = toIntArr(category_raw);
+					List<Category> categories = new CategoryDAO().getAllById(category);
+					m.setCategories(categories);
+					new MovieCategoryDao().addAll(m);
+				}
+				if (region_raw != null) {
+					int[] region = toIntArr(region_raw);
+					List<Region> regions = new RegionDao().getAllById(region);
+					m.setRegions(regions);
+					new MovieRegionDao().addAll(m);
+				}
+				if (director_raw != null) {
+					int[] director = toIntArr(director_raw);
+					List<Director> directors = new DirectorDao().getAllById(director);
+					m.setDirectors(directors);
+					new MovieDirectorDao().addAll(m);
+				}
+				if (tag_raw != null && tag_raw.length > 0) {
+					int[] tag = toIntArr(tag_raw);
+					List<Tag> tags = new TagDao().getAllById(tag);
+					m.setTags(tags);
+					new MovieTagDao().addAll(m);
+				}
+				if (studio_raw != null) {
+					int[] studio = toIntArr(studio_raw);
+					List<Studio> studios = new StudioDao().getAllById(studio);
+					m.setStudios(studios);
+					new MovieStudioDao().addAll(m);
+				}
+				if (actor_raw != null) {
+					int[] actor = toIntArr(actor_raw);
+					List<Actor> actors = new ActorDao().getAllById(actor);
+					m.setActors(actors);
+					new MovieActorDao().addAll(m);
+				}
+
 				m.setPoster_url(poster);
 				m.setNotify(notify);
 				m.setShowtimes(showtimes);
 				m.setTrailer_url(trailer_url);
-				m.setCategories(categories);
-				m.setRegions(regions);
-				m.setDirectors(directors);
-				m.setTags(tags);
-				m.setStudios(studios);
-				m.setActors(actors);
 
 				if (episodeName.length > 0) {
 					List<Episode> episodes = new ArrayList<>();
@@ -170,16 +206,14 @@ public class AddMovieServlet extends HttpServlet {
 				md.addAll(m);
 				EpisodeDao ed = new EpisodeDao();
 				ed.addAll(m);
-				new MovieTagDao().addAll(m);
-				new MovieRegionDao().addAll(m);
-				new MovieActorDao().addAll(m);
-				new MovieDirectorDao().addAll(m);
-				new MovieStudioDao().addAll(m);
-				new MovieCategoryDao().addAll(m);
-			} catch (Exception e) {
-				System.out.println(e);
 			}
+
+		} catch (NullPointerException e) {
+			System.out.println(e);
+			
+		}
 		response.sendRedirect("movie");
+		return;
 	}
 
 	public int[] toIntArr(String[] arr) {
