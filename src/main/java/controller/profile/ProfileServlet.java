@@ -34,6 +34,9 @@ public class ProfileServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		String msg = (String) request.getSession().getAttribute("msg");
+		System.out.println(msg);
+		request.setAttribute("msg", msg);
 		request.setAttribute("account", u);
 		request.getRequestDispatcher("profile.jsp").forward(request, response);
 	}

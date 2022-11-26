@@ -46,12 +46,12 @@ public class UpdateProfileServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 		String username = request.getParameter("username");
 		UserDAO ud = new UserDAO();
-	
 		User user = new User(username, pass, nname, 2);
 		ud.updateProfile(user, nusername, nname);
 		User nuser = new User(nusername, pass, nname, 2);
 		HttpSession session = request.getSession();
 		session.setAttribute("account", nuser);
+	
 		response.sendRedirect("home");
 
 	}

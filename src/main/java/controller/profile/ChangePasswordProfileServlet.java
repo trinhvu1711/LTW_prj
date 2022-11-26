@@ -17,42 +17,66 @@ import dal.UserDAO;
  */
 public class ChangePasswordProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ChangePasswordProfileServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ChangePasswordProfileServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.sendRedirect("profile");
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String npass = request.getParameter("npass");
 		String opass = request.getParameter("opass");
+		String rpass = request.getParameter("rpass");
 		String username = request.getParameter("username");
 		String name = request.getParameter("name");
 		UserDAO ud = new UserDAO();
-		if (ud.get(username, opass) == null) {
-			System.out.println(username);
-			System.out.println(opass);
-			System.out.println("loi");
+		if (rpass == null || rpass == "" || npass == null || npass == "" || opass == "" || opass == null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", "nullError");
+			response.sendRedirect("profile");
+			return;
 		}
-		else {
+		if (!rpass.equals(npass)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", "notDuplicatecpass");
+			response.sendRedirect("profile");
+			return;
+		}
+		if (npass.equals(opass)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", "duplicateopass");
+			response.sendRedirect("profile");
+			return;
+		}
+		if (ud.get(username, opass) == null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", "opassFail");
+			response.sendRedirect("profile");
+			return;
+		} else {
 			User u = new User(username, npass, name, 2);
 			ud.changePassword(u);
 			HttpSession session = request.getSession();
 			session.setAttribute("account", u);
-			response.sendRedirect("home");
+			session.setAttribute("msg", "success");
+			response.sendRedirect("profile");
 		}
 	}
 
