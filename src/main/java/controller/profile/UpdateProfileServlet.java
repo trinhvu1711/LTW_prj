@@ -45,6 +45,12 @@ public class UpdateProfileServlet extends HttpServlet {
 		String nname = request.getParameter("nname");
 		String pass = request.getParameter("pass");
 		String username = request.getParameter("username");
+		if (nusername == null || nusername == "" || nname == null || nname == "") {
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", "nullError");
+			response.sendRedirect("profile");
+			return;
+		}
 		UserDAO ud = new UserDAO();
 		User user = new User(username, pass, nname, 2);
 		ud.updateProfile(user, nusername, nname);
