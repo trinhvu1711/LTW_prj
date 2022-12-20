@@ -13,7 +13,7 @@ public class CategoryDAO extends DBContext {
 	
 	public List<Category> getAll(){
 		List<Category> list = new ArrayList<>();
-		String sql = "select * from category";
+		String sql = "select * from category order by name";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();

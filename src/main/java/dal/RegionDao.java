@@ -11,7 +11,7 @@ import model.Region;
 public class RegionDao extends DBContext {
 	public List<Region> getAll() {
 		List<Region> list = new ArrayList<>();
-		String sql = "select * from region";
+		String sql = "select * from region order by name";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();

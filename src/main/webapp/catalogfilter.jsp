@@ -15,21 +15,31 @@
             <meta name="yahooBOT" content="index,follow" />
             <meta name="slurp" content="index,follow" />
             <meta name="msnbot" content="index,follow" />
-            <meta name="csrf-token" content="2jYJDgoHGSkpyqGMaE910rLb36GSyGJ4EcAu557F">
+            <meta name="csrf-token" content="v2BTcT1i3uwxuW3hpQ2eEPao6UiSyCyzp9eyflO0">
             <meta property="fb:app_id" content="" />
             <link rel="shortcut icon" href="" type="image/png" />
-            <title>Phim hay mới cập nhật 2022</title>
-            <meta name="description" content="Ophim.TV">
-            <meta name="keywords" content="Ophim.TV">
-            <link rel="canonical" href="https://default.ophimcms.com" />
-            <meta property="og:title" content="Phim hay mới cập nhật 2022" />
-            <meta property="og:description" content="Ophim.TV" />
-            <meta property="og:url" content="current" />
+            <title>${obj.name}</title>
+            <meta name="description" content="Des Phim bộ">
+            <meta name="keywords" content="Key Phim bộ">
+            <link rel="canonical" href="https://default.ophimcms.com/danh-sach/phim-bo" />
+            <link rel="prev" href="https://default.ophimcms.com" />
             <meta property="og:site_name" content="Ophim.TV" />
+            <meta property="og:title" content="Title Phim bộ" />
+            <meta property="og:type" content="movie" />
+            <meta property="og:locale" content="vi-VN" />
+            <meta property="og:url" content="https://default.ophimcms.com/danh-sach/phim-bo" />
+            <meta property="og:description" content="Des Phim bộ" />
 
             <meta name="twitter:site" content="Ophim.TV" />
+            <meta name="twitter:title" content="Title Phim bộ" />
+            <meta name="twitter:card" content="movie" />
+            <meta name="twitter:image" content="" />
+            <meta name="twitter:description" content="Des Phim bộ" />
+            <meta name="twitter:url" content="https://default.ophimcms.com/danh-sach/phim-bo" />
             <script
                 type="application/ld+json">{"@context":"https://schema.org","name":"Phim hay mới cập nhật 2022","description":"Ophim.TV","image":null}</script>
+            <script
+                type="application/ld+json">{"@context":"https://schema.org","@type":"movie","name":"Title Phim bộ","description":"Des Phim bộ","url":"https://default.ophimcms.com/danh-sach/phim-bo","image":null}</script>
 
             <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css">
@@ -43,10 +53,10 @@
             <link rel="stylesheet" href="assets/libs/wowslider/wowslider.css">
             <link rel="stylesheet" href="assets/libs/slidebars/slidebars.min.css">
             <link rel="stylesheet" href="assets/css/swiper.css">
-            <link rel="stylesheet" href="assets/css/style926f.css">
+            <link rel="stylesheet" href="assets/css/style926f.css?ver=2.45">
             <link rel="stylesheet" href="assets/css/responsivepv.css">
-            <link rel="stylesheet" href="assets/css/custom926f.css">
-            <link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
+            <link rel="stylesheet" href="assets/css/custom926f.css?ver=2.45">
+
 
         </head>
 
@@ -83,7 +93,7 @@
                                         <a href="showintheater" title="Chiếu rạp">Chiếu rạp</a>
                                     </li>
                                     <li class="">
-                                        <a href="home" title="Trang chủ">Trang chủ</a>
+                                        <a href="/" title="Trang chủ">Trang chủ</a>
                                     </li>
                                     <li class="dropdown mega-dropdown has-submenu">
                                         <a href="javascript:;" title="Thể loại">Thể loại <i
@@ -119,40 +129,31 @@
                                 </form>
                             </div>
                             <div class="navbar-cell stretch">
-                                <div class="profile">
-                                    <img src="./asserts/img/admin.png" alt="">
-                                    <ul class="profile-link">
-                                        <li><a href="userprofile"><i class="las la-user-circle icon"></i>
-                                                Thông tin</a></li>
-                                        <li><a href="filmfollow"><i class="las la-user-cog icon"></i>
-                                                Phim theo dõi</a></li>
-                                        <li><a href="filmhistory"><i class="las la-history"></i>
-                                                Phim đã coi</a></li>
-                                        <li><a href="logout"><i class="las la-sign-out-alt icon"></i>
-                                                Đăng xuất</a></li>
-                                    </ul>
+                                <div class="user-acount">
+                                    <div id="top-user"></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </nav>
             </header>
             <div class="sb-slidebar sb-left">
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="showintheater" class="dropdown-toggle" data-toggle="dropdown" title="Chiếu rạp">Chiếu
-                            rạp</a>
+                        <a href="showintheater" class="dropdown-toggle" data-toggle="dropdown"
+                            title="Chiếu rạp">Chiếu rạp</a>
                     </li>
                     <li class="">
-                        <a href="home" class="dropdown-toggle" data-toggle="dropdown" title="Trang chủ">Trang chủ</a>
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" title="Trang chủ">Trang chủ</a>
                     </li>
                     <li class="dropdown mega-dropdown has-submenu">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" title="Thể loại">Thể loại
                             <i class="sp-movie-icon-down"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <c:forEach var="c" items="${c}">
-                                <li> <a href="categoryfilter?id=${c.id}" title="${c.name}">${c.name}</a>
-                                </li>
+                                <li> <a href="categoryfilter?id=${c.id}" title="${c.name}">${c.name}</a> </li>
                             </c:forEach>
+
                         </ul>
                     </li>
                     <li class="dropdown mega-dropdown has-submenu">
@@ -160,7 +161,8 @@
                             <i class="sp-movie-icon-down"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <c:forEach var="r" items="${r}">
-                                <li> <a href="regionfilter?id=${r.id}" title="${r.name}">${r.name}</a> </li>
+                                <li> <a href="regionfilter?id=${r.id}" title="${r.name}">${r.name}</a>
+                                </li>
                             </c:forEach>
                         </ul>
                     </li>
@@ -197,157 +199,189 @@
                     <div class="light-overlay"></div>
                     <section id="content">
                         <div class="container-fluid clearfix">
-                            <div class="block">
-                                <div class="block-heading with-tabs">
-                                    <div class="block-title">
-                                        <h2 class="block-title"><i class="sp-movie-icon-cup"></i> Phim Hay Đề Cử</h2>
-                                    </div>
-                                </div>
-                                <div class="block-content">
-                                    <div id="owl-slide" class="row-fluid">
-                                        <div id="phim-hay" class="block-items row fix-row">
+                            <div class="container-wrapper">
+                                <ol class="breadcrumb clearfix" itemScope itemType="https://schema.org/BreadcrumbList">
+                                    <li itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem">
+                                        <a class="" itemProp="item" title="Xem phim" href="/">
+                                            <span class="" itemProp="name">
+                                                Xem phim
+                                            </span>
+                                            <meta itemProp="position" content="1" />
+                                        </a>
+                                    </li>
 
-                                            <c:forEach items="${recommend}" var="phim">
-                                                <c:set var="id" value="${phim.id}"></c:set>
-                                                <c:url value="detail" var="detailUrl">
-                                                    <c:param name="id" value="${id}"></c:param>
-                                                </c:url>
-                                                <div class="item">
-                                                    <a class="inner" href="${detailUrl}" title="${phim.name}">
-                                                        <img data-src="${phim.thumb_url}" alt="${phim.name}"
-                                                            class="lazyload movie-thumb" />
-                                                        <span class="thumb-icon"><i class="sp-movie-icon-play"></i>
-                                                        </span>
-                                                        <span class="overlay"></span>
-                                                        <div class="description">
-                                                            <h3 class="text-nowrap">${phim.name}</h3>
-                                                            <div class="meta clearfix">
-                                                                <span class="pull-left">${phim.publish_year}</span>
-                                                                <span class="pull-right">${phim.episode_current}</span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="badge">${phim.quality} ${phim.language}</span>
-                                                    </a>
-                                                </div>
-                                            </c:forEach>
-
-                                        </div>
-                                    </div>
-                                </div>
+                                    <li class="" itemprop="itemListElement" itemscope=""
+                                        itemtype="http://schema.org/ListItem">
+                                        <a itemprop="item" href="https://default.ophimcms.com/danh-sach/phim-bo"
+                                            title="Danh sách Phim bộ">
+                                            <span class="breadcrumb_last" itemprop="name">
+                                                Danh sách ${obj.name}
+                                            </span>
+                                        </a>
+                                        <meta itemprop="position" content="2">
+                                    </li>
+                                </ol>
                             </div>
-                        </div>
-                    </section>
-                    <section id="content">
-                        <div class="container-fluid clearfix">
                             <div class="column-with-300">
+                                <div class="div_filter">
+                                    <form id="form-search" class="form-inline" method="GET" action="FilmFilterServlet">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <select class="form-control" id="category" name="category"
+                                                    form="form-search">
+                                                    <option value="">Tất cả thể loại</option>
+                                                    <c:forEach var="c" items="${c}">
+                                                        <option value="${c.id}">
+                                                            ${c.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <select class="form-control" name="region" form="form-search">
+                                                    <option value="">Tất cả quốc gia</option>
+                                                    <c:forEach var="r" items="${r}">
+                                                        <option value="${r.id}">
+                                                            ${r.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <select class="form-control" name="year" form="form-search">
+                                                    <option value="">Tất cả năm</option>
+                                                    <c:forEach var="i" begin="0" end="108">
+                                                        <c:set var="decr" value="${2022 - i}"/>
+                                                        <option value="${decr}">
+                                                            ${decr}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <select class="form-control" id="sort" name="sort"
+                                                    form="form-search">
+                                                    <option value="">Sắp xếp</option>
+                                                    <option value="created">Thời gian đăng</option>
+                                                    <option value="publish_year">Năm sản xuất</option>
+                                                    <option value="view_total">Lượt xem</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <select class="form-control" id="type" name="type"
+                                                    form="form-search">
+                                                    <option value="">Mọi định dạng</option>
+                                                    <option value="23432">Phim bộ</option>
+                                                    <option value="21314">Phim lẻ</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn btn-primary button_filter" form="form-search"
+                                                    type="submit">Lọc Phim</button>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <c:set value="${page}" var="page"></c:set>
                                 <div class="block">
                                     <div class="block-heading with-tabs">
                                         <div class="block-title">
-                                            <h2 class="block-title"><i class="sp-movie-icon-videocam"></i> Phim bộ mới
+                                            <h2 class="block-title"><i class="sp-movie-icon-videocam"></i> Danh sách
+                                                ${obj.name}
                                             </h2>
-                                        </div>
-                                        <div class="box-asian-tabs">
-                                            <ul class="nav nav-tabs">
-                                                <li role="presentation">
-                                                    <c:url value="typefilter" var="typefilterUrl">
-                                                        <c:param name="id" value="23432"></c:param>
-                                                    </c:url>
-                                                    <a href="${typefilterUrl}" class="film-tab-type"
-                                                        title="Phim bộ mới">Xem
-                                                        thêm</a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
 
                                     <div class="block-content">
-                                        <div class="block-items row fix-row">
-                                            <c:forEach items="${phimbo}" var="phim">
-                                                <c:set var="id" value="${phim.id}"></c:set>
-                                                <c:url value="detail" var="detailUrl">
-                                                    <c:param name="id" value="${id}"></c:param>
-                                                </c:url>
-                                                <div class="col-xlg-2 col-lg-15 col-md-3 col-sm-4 col-xs-6">
-                                                    <div class="item">
-                                                        <a class="inner" href="${detailUrl}" title="${phim.name}">
-                                                            <img data-src="${phim.thumb_url}" alt="${phim.name}"
-                                                                class="movie-thumb lazyload lazy-loaded"
-                                                                src="${phim.thumb_url}">
-                                                            <span class="thumb-icon">
-                                                                <i class="sp-movie-icon-play"></i>
-                                                            </span>
-                                                            <span class="overlay"></span>
-                                                            <div class="description">
-                                                                <h3 class="text-nowrap">${phim.name}</h3>
-                                                                <div class="meta clearfix">
-                                                                    <span class="pull-left">${phim.publish_year}</span>
-                                                                    <span
-                                                                        class="pull-right">${phim.episode_current}</span>
-                                                                </div>
-                                                            </div>
-                                                            <span class="badge">${phim.quality} ${phim.language}</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="block">
-                                    <div class="block-heading with-tabs">
-                                        <div class="block-title">
-                                            <h2 class="block-title"><i class="sp-movie-icon-videocam"></i> Phim lẻ mới
-                                            </h2>
-                                        </div>
-                                        <div class="box-asian-tabs">
-                                            <ul class="nav nav-tabs">
-                                                <li role="presentation">
-                                                    <c:url value="typefilter" var="typefilterUrl">
-                                                        <c:param name="id" value="21314"></c:param>
+                                        <c:if test="${num == 0 }">
+                                            <p>Rất tiếc, không có nội dung nào trùng khớp yêu cầu</p>
+                                        </c:if>
+
+                                        <c:if test="${num != 0 }">
+                                            <div class="block-items row fix-row">
+                                                <c:forEach var="phim" items="${phim}">
+                                                    <c:set var="id" value="${phim.id}"></c:set>
+                                                    <c:url value="detail" var="detailUrl">
+                                                        <c:param name="id" value="${id}"></c:param>
                                                     </c:url>
-                                                    <a href="${typefilterUrl}" class="film-tab-type"
-                                                        title="Phim lẻ mới">Xem
-                                                        thêm</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="block-content">
-                                        <div class="block-items row fix-row">
-
-                                            <c:forEach items="${phimle}" var="phim">
-                                                <c:set var="id" value="${phim.id}"></c:set>
-                                                <c:url value="detail" var="detailUrl">
-                                                    <c:param name="id" value="${id}"></c:param>
-                                                </c:url>
-                                                <div class="col-xlg-2 col-lg-15 col-md-3 col-sm-4 col-xs-6">
-                                                    <div class="item">
-                                                        <a class="inner" href="${detailUrl}" title="${phim.name}">
-                                                            <img data-src="${phim.thumb_url}" alt="${phim.name}"
-                                                                class="movie-thumb lazyload lazy-loaded"
-                                                                src="${phim.thumb_url}">
-                                                            <span class="thumb-icon">
-                                                                <i class="sp-movie-icon-play"></i>
-                                                            </span>
-                                                            <span class="overlay"></span>
-                                                            <div class="description">
-                                                                <h3 class="text-nowrap">${phim.name}</h3>
-                                                                <div class="meta clearfix">
-                                                                    <span class="pull-left">${phim.publish_year}</span>
-                                                                    <span
-                                                                        class="pull-right">${phim.episode_current}</span>
+                                                    <div class="col-xlg-2 col-lg-15 col-md-3 col-sm-4 col-xs-6">
+                                                        <div class="item">
+                                                            <a class="inner" href="${detailUrl}" title="${phim.name}">
+                                                                <img data-src="${phim.thumb_url}" alt="${phim.name}"
+                                                                    class="movie-thumb lazyload lazy-loaded"
+                                                                    src="${phim.thumb_url}">
+                                                                <span class="thumb-icon">
+                                                                    <i class="sp-movie-icon-play"></i>
+                                                                </span>
+                                                                <span class="overlay"></span>
+                                                                <div class="description">
+                                                                    <h3 class="text-nowrap">${phim.name}</h3>
+                                                                    <div class="meta clearfix">
+                                                                        <span
+                                                                            class="pull-left">${phim.publish_year}</span>
+                                                                        <span
+                                                                            class="pull-right">${phim.episode_current}</span>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <span class="badge">${phim.quality} ${phim.language}</span>
-                                                        </a>
+                                                                <span class="badge">${phim.quality}
+                                                                    ${phim.language}</span>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </c:forEach>
+                                                </c:forEach>
+                                            </div>
 
-                                        </div>
+                                            <div class="text-center">
+                                                <ul class="pagination no-pading no-margin">
+
+                                                    <c:if test="${page == 1}">
+                                                        <li class="page-item disabled" aria-disabled="true"
+                                                            aria-label="&laquo; Previous">
+                                                            <span class="page-link" aria-hidden="true">&larr;</span>
+                                                        </li>
+                                                    </c:if>
+                                                    <c:if test="${page >1}">
+                                                        <li class="page-item">
+                                                            <a class="page-link"
+                                                                href="typefilter?page=${page-1}&id=${obj.id}" rel="next"
+                                                                aria-label="Next &raquo;">&larr;</a>
+                                                        </li>
+                                                    </c:if>
+
+                                                    <c:forEach begin="${1}" end="${num}" var="i">
+                                                        <c:if test="${i == page}">
+                                                            <li class="page-item active">
+                                                                <a class="page-link"
+                                                                    href="typefilter?page=${i}&id=${obj.id}">${i}</a>
+                                                            </li>
+                                                        </c:if>
+                                                        <c:if test="${i != page}">
+                                                            <li class="page-item">
+                                                                <a class="page-link"
+                                                                    href="typefilter?page=${i}&id=${obj.id}">${i}</a>
+                                                            </li>
+                                                        </c:if>
+                                                    </c:forEach>
+
+
+                                                    <c:if test="${page == num}">
+                                                        <li class="page-item disabled" aria-disabled="true"
+                                                            aria-label="&laquo; Previous">
+                                                            <span class="page-link" aria-hidden="true">&rarr;</span>
+                                                        </li>
+                                                    </c:if>
+                                                    <c:if test="${page < num}">
+                                                        <li class="page-item">
+                                                            <a class="page-link"
+                                                                href="typefilter?page=${page+1}&id=${obj.id}" rel="next"
+                                                                aria-label="Next &raquo;">&rarr;</a>
+                                                        </li>
+                                                    </c:if>
+                                                </ul>
+
+                                            </div>
+                                        </c:if>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="right-sidebar column-300">
                                 <div class="block" id="sidebar">
@@ -389,6 +423,7 @@
                                                             </div>
                                                         </li>
                                                     </c:forEach>
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -503,30 +538,14 @@
                     <img src="" alt="">
                 </div>
             </div>
-            <script type="text/javascript">
-                const profile = document.querySelector(".profile");
-                const imgProfile = profile.querySelector("img");
-                const dropdownProfile = profile.querySelector(".profile-link");
 
-                imgProfile.addEventListener("click", function () {
-                    dropdownProfile.classList.toggle("show");
-                });
-
-                window.addEventListener("click", function (e) {
-                    if (e.target !== imgProfile) {
-                        if (e.target != dropdownProfile) {
-                            if (dropdownProfile.classList.contains("show")) {
-                                dropdownProfile.classList.remove("show");
-                            }
-                        }
-                    }
-                });
-
-            </script>
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/core.min.js"></script>
             <script src="assets/js/toastr.min.js"></script>
             <script src="assets/js/function.js"></script>
+
+
+
 
         </body>
 

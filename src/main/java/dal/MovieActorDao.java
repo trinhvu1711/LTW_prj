@@ -1,4 +1,4 @@
-package dal;
+	package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,5 +63,6 @@ public class MovieActorDao extends DBContext {
 		for (Actor t : list) {
 			System.out.println(t);
 		}
+		System.out.println(new MovieActorDao().get(169435));
 	}
 }

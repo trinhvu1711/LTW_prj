@@ -254,6 +254,123 @@ a {
     background-color: #055699;
 }
 
+#header .profile {
+	margin-right: 20px;
+}
+#header .profile img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid var(--bs-gray-dark);
+}
+
+.profile .profile-link {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 30px;
+    background: white;
+    padding: 10px 0;
+    box-shadow: 1px 1px 20px 3px #adb6bb;
+    border-radius: 10px;
+    min-width: 130px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s ease;
+}
+
+.profile .profile-link.show {
+    top: 100%;
+    opacity: 1;
+    pointer-events: visible;
+}
+
+.profile .profile-link a {
+    padding: 7px 16px;
+    display: flex;
+    grid-gap: 6px;
+    font-size: 18px;
+    color: var(--bs-dark);
+    align-items: center;
+    transition: all .3s ease;
+}
+
+.profile .profile-link a:hover {
+	color: #f986c6cf;
+}
+
+input[type="text"] {
+	background-color: #fff;
+	border: 1px solid rgba(0, 40, 100, .12);
+	border-radius: 3px;
+	color: #506690;
+	display: block;
+	font-size: .9375rem;
+	font-weight: 400;
+	height: 35px;
+	line-height: 1.6;
+	padding: 6px 0px;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	width: 100%;
+}
+
+.form-option {
+	background-color: #fff;
+	border: 1px solid #f06402;
+	border-radius: 3px;
+	color: #506690;
+	display: block;
+	font-size: .9375rem;
+	font-weight: 400;
+	height: 2.375rem;
+	line-height: 1.6;
+	padding: 0.375rem 0.75rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	width: 100%;
+}
+
+.form-option, input[type=text]:focus {
+	background-color: #fff;
+	border-color: #f06402;
+	box-shadow: 0 0 0 2px #e1dcfb;
+	color: #495057;
+	outline: 0;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	color: #FFFFFF;
+}
+
+.card-heading {
+	padding: 20px;
+	border: 1px solid #f06402;
+}
+
+.card-body {
+	border: 1px solid #f06402;
+	padding: 20px;
+	border-top: none;
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+}
+
+.card-body .card-item {
+	width: 100%;
+}
+
+.card-footer {
+	display: flex;
+	padding: 20px;
+	border: 1px solid #f06402;
+	border-top: none;
+	gap: 10px;
+}
+
 .block {
     position: relative;
     margin-bottom: 30px

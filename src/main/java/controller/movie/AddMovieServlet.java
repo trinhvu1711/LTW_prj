@@ -202,6 +202,20 @@ public class AddMovieServlet extends HttpServlet {
 					m.setEpisode(episodes);
 				}
 
+				String chieu_rap = request.getParameter("is_shown_in_theater");
+				String ban_quyen_phim = request.getParameter("is_copyright");
+				String noi_dung_nguoi_lon = request.getParameter("is_sensitive_content");
+				String de_cu = request.getParameter("is_recommended");
+				
+				m.setIs_shown_in_theater(0);
+				m.setIs_sensitive_content(0);
+				m.setIs_copyright(0);
+				m.setIs_recommended(0);
+				if (chieu_rap!= null) m.setIs_shown_in_theater(1);
+				if (ban_quyen_phim != null) m.setIs_copyright(1);
+				if (noi_dung_nguoi_lon != null) m.setIs_sensitive_content(1);
+				if (de_cu != null) m.setIs_recommended(1);
+				
 				MovieDAO md = new MovieDAO();
 				md.addAll(m);
 				EpisodeDao ed = new EpisodeDao();

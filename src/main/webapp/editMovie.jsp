@@ -35,12 +35,12 @@
 	</section>
 	<!--SIDE BAR-->
 	<section id="sidebar">
-		<a href="#" class="brand"><img src="./asserts/img/Logo.png" alt="">VPMovie</a>
+		<a href="movie" class="brand"><img src="./asserts/img/Logo.png" alt="">VPMovie</a>
 		<ul class="side-menu">
 			<li><a href="dashboard" class=""><i class="las la-home icon"></i>Dashboard</a></li>
 			<li class="divider">Phim</li>
 			<li>
-			<li><a href="movies" class="active"><i
+			<li><a href="movie" class="active"><i
 					class="las la-play-circle icon"></i>Danh sách phim</a></li>
 			<li><a href="#"><i class="las la-list icon"></i></i>Phân loại <i
 					class="las la-angle-left icon-right icon"></i></a>
@@ -392,22 +392,49 @@
 
 				<div id="khac" class="tabcontent">
 					<div>
+						
 						<div class="mt-15">
 							<div class="form-check mt-8">
-								<input type="checkbox" name="is_shown_in_theater"> <label>Phim
+								 
+								<c:if test="${m.is_shown_in_theater == 1}">
+									<input type="checkbox" name="is_shown_in_theater" checked="checked"> <label>Phim
 									chiếu rạp</label>
+								</c:if>
+								<c:if test="${m.is_shown_in_theater == 0}">
+									<input type="checkbox" name="is_shown_in_theater"> <label>Phim
+									chiếu rạp</label>
+								</c:if>
 							</div>
 							<div class="form-check mt-8">
-								<input type="checkbox" value="is_copyright"> <label>Có
+								<c:if test="${m.is_copyright == 1}">
+									<input type="checkbox" name="is_copyright" checked="checked"> <label>Có
 									bản quyền phim</label>
+								</c:if>
+								<c:if test="${m.is_copyright == 0}">
+									<input type="checkbox" name="is_copyright"> <label>Có
+									bản quyền phim</label>
+								</c:if>
+
 							</div>
 							<div class="form-check mt-8">
-								<input type="checkbox" value="is_sensitive_content"> <label>Cảnh
+								<c:if test="${m.is_sensitive_content == 1}"  > 
+									<input type="checkbox" name="is_sensitive_content" checked="checked"> <label>Cảnh
 									báo nội dung người lớn</label>
+								</c:if>
+								<c:if test="${m.is_sensitive_content == 0}"  > 
+									<input type="checkbox" name="is_sensitive_content"> <label>Cảnh
+									báo nội dung người lớn</label>
+								</c:if>
 							</div>
 							<div class="form-check mt-8">
-								<input type="checkbox" value="is_recommended"> <label>Đề
+								<c:if test="${m.is_recommended == 1}">
+									<input type="checkbox" checked="checked" name="is_recommended"> <label>Đề
 									cử</label>
+								</c:if>
+								<c:if test="${m.is_recommended == 0}">
+									<input type="checkbox" name="is_recommended"> <label>Đề
+									cử</label>
+								</c:if>
 							</div>
 						</div>
 					</div>

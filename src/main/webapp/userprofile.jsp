@@ -83,7 +83,7 @@
                                         <a href="showintheater" title="Chiếu rạp">Chiếu rạp</a>
                                     </li>
                                     <li class="">
-                                        <a href="home" title="Trang chủ">Trang chủ</a>
+                                        <a href="/" title="Trang chủ">Trang chủ</a>
                                     </li>
                                     <li class="dropdown mega-dropdown has-submenu">
                                         <a href="javascript:;" title="Thể loại">Thể loại <i
@@ -143,7 +143,7 @@
                             rạp</a>
                     </li>
                     <li class="">
-                        <a href="home" class="dropdown-toggle" data-toggle="dropdown" title="Trang chủ">Trang chủ</a>
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" title="Trang chủ">Trang chủ</a>
                     </li>
                     <li class="dropdown mega-dropdown has-submenu">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" title="Thể loại">Thể loại
@@ -197,251 +197,112 @@
                     <div class="light-overlay"></div>
                     <section id="content">
                         <div class="container-fluid clearfix">
+                            <div class="container-wrapper">
+                                <ol class="breadcrumb clearfix">
+                                    <li>
+                                        <a class="" title="Trang chủ" href="/">
+                                            <span class="">
+                                                Trang chủ
+                                            </span>
+                                            <meta itemProp="position" content="1" />
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a title=" Tài khoản">
+                                            <span class="breadcrumb_last">
+                                                Tài khoản
+                                            </span>
+                                        </a>
+                                        <meta itemprop="position" content="2">
+                                    </li>
+                                    <li class="">
+                                        <a title="Thông tin">
+                                            <span class="breadcrumb_last">
+                                                Thông tin
+                                            </span>
+                                        </a>
+                                        <meta itemprop="position" content="3">
+                                    </li>
+                                </ol>
+                            </div>
+
                             <div class="block">
                                 <div class="block-heading with-tabs">
                                     <div class="block-title">
-                                        <h2 class="block-title"><i class="sp-movie-icon-cup"></i> Phim Hay Đề Cử</h2>
+                                        <h2 class="block-title"><i class="las la-user-cog"></i> Thông tin tài
+                                            khoản</h2>
                                     </div>
                                 </div>
                                 <div class="block-content">
-                                    <div id="owl-slide" class="row-fluid">
-                                        <div id="phim-hay" class="block-items row fix-row">
 
-                                            <c:forEach items="${recommend}" var="phim">
-                                                <c:set var="id" value="${phim.id}"></c:set>
-                                                <c:url value="detail" var="detailUrl">
-                                                    <c:param name="id" value="${id}"></c:param>
-                                                </c:url>
-                                                <div class="item">
-                                                    <a class="inner" href="${detailUrl}" title="${phim.name}">
-                                                        <img data-src="${phim.thumb_url}" alt="${phim.name}"
-                                                            class="lazyload movie-thumb" />
-                                                        <span class="thumb-icon"><i class="sp-movie-icon-play"></i>
-                                                        </span>
-                                                        <span class="overlay"></span>
-                                                        <div class="description">
-                                                            <h3 class="text-nowrap">${phim.name}</h3>
-                                                            <div class="meta clearfix">
-                                                                <span class="pull-left">${phim.publish_year}</span>
-                                                                <span class="pull-right">${phim.episode_current}</span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="badge">${phim.quality} ${phim.language}</span>
-                                                    </a>
-                                                </div>
-                                            </c:forEach>
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
+                            <!-- MAIN -->
+                            <form action="updateProfile" method="post">
+                                <div class="card">
+                                    <div class="card-heading">Update Account Info</div>
+                                    <div class="card-body">
+                                        <input type="hidden" name="username" class="mt-8" value="${account.username}">
+                                        <input type="hidden" name="pass" class="mt-8" value="${account.password}">
+                                        <input type="hidden" name="pass" class="mt-8" value="${account.name}">
+                                        <div class="card-item">
+                                            <label for="">Name</label> <input type="text" name="nname"
+                                                value="${account.name}" class="mt-8">
+                                        </div>
+                                        <div class="card-item">
+                                            <label for="">Email</label> <input type="text" name="nusername"
+                                                value="${account.username}" class="mt-8">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="lead" type="submit">
+                                            <div class="btn btn-teal">
+                                                <i class="las la-save"></i> Save
+                                            </div>
+                                        </button>
+                                        <button class="lead" type="reset">
+                                            <a href="#" class="btn btn-gray">Cancel</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <form action="changePasswordProfile" method="post">
+
+                                <div class="card">
+                                    <div class="card-heading">Change Password</div>
+                                    <div class="card-body">
+                                        <input type="hidden" name="username" class="mt-8" value="${account.username}">
+                                        <input type="hidden" name="pass" class="mt-8" value="${account.password}">
+                                        <div class="card-item">
+                                            <label for="">Old password</label> <input type="text" name="opass"
+                                                class="mt-8">
+                                        </div>
+                                        <div class="card-item">
+                                            <label for="">New password</label> <input type="text" name="npass"
+                                                class="mt-8">
+                                        </div>
+                                        <div class="card-item">
+                                            <label for="">Confirm password</label> <input type="text" name="rpass"
+                                                class="mt-8">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="lead" type="submit">
+                                            <div class="btn btn-teal">
+                                                <i class="las la-save"></i> Save
+                                            </div>
+                                        </button>
+                                        <button class="lead" type="reset">
+                                            <a href="#" class="btn btn-gray">Cancel</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
                         </div>
                     </section>
-                    <section id="content">
-                        <div class="container-fluid clearfix">
-                            <div class="column-with-300">
-                                <div class="block">
-                                    <div class="block-heading with-tabs">
-                                        <div class="block-title">
-                                            <h2 class="block-title"><i class="sp-movie-icon-videocam"></i> Phim bộ mới
-                                            </h2>
-                                        </div>
-                                        <div class="box-asian-tabs">
-                                            <ul class="nav nav-tabs">
-                                                <li role="presentation">
-                                                    <c:url value="typefilter" var="typefilterUrl">
-                                                        <c:param name="id" value="23432"></c:param>
-                                                    </c:url>
-                                                    <a href="${typefilterUrl}" class="film-tab-type"
-                                                        title="Phim bộ mới">Xem
-                                                        thêm</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
 
-                                    <div class="block-content">
-                                        <div class="block-items row fix-row">
-                                            <c:forEach items="${phimbo}" var="phim">
-                                                <c:set var="id" value="${phim.id}"></c:set>
-                                                <c:url value="detail" var="detailUrl">
-                                                    <c:param name="id" value="${id}"></c:param>
-                                                </c:url>
-                                                <div class="col-xlg-2 col-lg-15 col-md-3 col-sm-4 col-xs-6">
-                                                    <div class="item">
-                                                        <a class="inner" href="${detailUrl}" title="${phim.name}">
-                                                            <img data-src="${phim.thumb_url}" alt="${phim.name}"
-                                                                class="movie-thumb lazyload lazy-loaded"
-                                                                src="${phim.thumb_url}">
-                                                            <span class="thumb-icon">
-                                                                <i class="sp-movie-icon-play"></i>
-                                                            </span>
-                                                            <span class="overlay"></span>
-                                                            <div class="description">
-                                                                <h3 class="text-nowrap">${phim.name}</h3>
-                                                                <div class="meta clearfix">
-                                                                    <span class="pull-left">${phim.publish_year}</span>
-                                                                    <span
-                                                                        class="pull-right">${phim.episode_current}</span>
-                                                                </div>
-                                                            </div>
-                                                            <span class="badge">${phim.quality} ${phim.language}</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="block">
-                                    <div class="block-heading with-tabs">
-                                        <div class="block-title">
-                                            <h2 class="block-title"><i class="sp-movie-icon-videocam"></i> Phim lẻ mới
-                                            </h2>
-                                        </div>
-                                        <div class="box-asian-tabs">
-                                            <ul class="nav nav-tabs">
-                                                <li role="presentation">
-                                                    <c:url value="typefilter" var="typefilterUrl">
-                                                        <c:param name="id" value="21314"></c:param>
-                                                    </c:url>
-                                                    <a href="${typefilterUrl}" class="film-tab-type"
-                                                        title="Phim lẻ mới">Xem
-                                                        thêm</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="block-content">
-                                        <div class="block-items row fix-row">
-
-                                            <c:forEach items="${phimle}" var="phim">
-                                                <c:set var="id" value="${phim.id}"></c:set>
-                                                <c:url value="detail" var="detailUrl">
-                                                    <c:param name="id" value="${id}"></c:param>
-                                                </c:url>
-                                                <div class="col-xlg-2 col-lg-15 col-md-3 col-sm-4 col-xs-6">
-                                                    <div class="item">
-                                                        <a class="inner" href="${detailUrl}" title="${phim.name}">
-                                                            <img data-src="${phim.thumb_url}" alt="${phim.name}"
-                                                                class="movie-thumb lazyload lazy-loaded"
-                                                                src="${phim.thumb_url}">
-                                                            <span class="thumb-icon">
-                                                                <i class="sp-movie-icon-play"></i>
-                                                            </span>
-                                                            <span class="overlay"></span>
-                                                            <div class="description">
-                                                                <h3 class="text-nowrap">${phim.name}</h3>
-                                                                <div class="meta clearfix">
-                                                                    <span class="pull-left">${phim.publish_year}</span>
-                                                                    <span
-                                                                        class="pull-right">${phim.episode_current}</span>
-                                                                </div>
-                                                            </div>
-                                                            <span class="badge">${phim.quality} ${phim.language}</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-sidebar column-300">
-                                <div class="block" id="sidebar">
-                                    <div class="block-heading" style="border: none;">
-                                        <div class="block-title">
-                                            <i class="fa fa-star"></i> Top phim lẻ
-                                        </div>
-                                    </div>
-                                    <div class="box-asian-tabs tab-remote-sidebar">
-                                        <ul class="nav nav-tabs nav-justified"></ul>
-                                        <div class="tab-content p-none block-single list_data_tab_pb"
-                                            style="position: static; zoom: 1;">
-                                            <div class="content-tab-sidebar" id="owl-slide">
-                                                <ul class="list-group list-group-movie clearfix">
-                                                    <c:forEach items="${topphimle}" var="phim">
-                                                        <c:set var="id" value="${phim.id}"></c:set>
-                                                        <c:url value="detail" var="detailUrl">
-                                                            <c:param name="id" value="${id}"></c:param>
-                                                        </c:url>
-                                                        <li class="list-group-item clearfix">
-                                                            <div class="thumbnail">
-                                                                <a href="${phim.thumb_url}" title="${phim.name}">
-                                                                    <img data-src="${phim.thumb_url}" class="lazyload"
-                                                                        alt="${phim.name}" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="meta-item">
-                                                                <h3 class="name-1">
-                                                                    <a href="${detailUrl}"
-                                                                        title="${phim.name}">${phim.name}</a>
-                                                                </h3>
-                                                                <h4 class="name-2">${phim.origin_name}
-                                                                    (${phim.publish_year})</h4>
-                                                                <p>${phim.episode_current}</p>
-                                                                <p>
-                                                                    <i class="fa fa-video-camera"></i>
-                                                                    ${phim.view_month}
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                    </c:forEach>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="block" id="sidebar">
-                                    <div class="block-heading" style="border: none;">
-                                        <div class="block-title">
-                                            <i class="fa fa-star"></i> Top phim bộ
-                                        </div>
-                                    </div>
-                                    <div class="box-asian-tabs tab-remote-sidebar">
-                                        <ul class="nav nav-tabs nav-justified"></ul>
-                                        <div class="tab-content p-none block-single list_data_tab_pb"
-                                            style="position: static; zoom: 1;">
-                                            <div class="content-tab-sidebar" id="owl-slide">
-                                                <ul class="list-group list-group-movie clearfix">
-                                                    <c:forEach items="${topphimbo}" var="phim">
-                                                        <c:set var="id" value="${phim.id}"></c:set>
-                                                        <c:url value="detail" var="detailUrl">
-                                                            <c:param name="id" value="${id}"></c:param>
-                                                        </c:url>
-                                                        <li class="list-group-item clearfix">
-                                                            <div class="thumbnail">
-                                                                <a href="${phim.thumb_url}" title="${phim.name}">
-                                                                    <img data-src="${phim.thumb_url}" class="lazyload"
-                                                                        alt="${phim.name}" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="meta-item">
-                                                                <h3 class="name-1">
-                                                                    <a href="${detailUrl}"
-                                                                        title="${phim.name}">${phim.name}</a>
-                                                                </h3>
-                                                                <h4 class="name-2">${phim.origin_name}
-                                                                    (${phim.publish_year})</h4>
-                                                                <p>${phim.episode_current}</p>
-                                                                <p>
-                                                                    <i class="fa fa-video-camera"></i>
-                                                                    ${phim.view_month}
-                                                                </p>
-                                                            </div>
-                                                        </li>
-                                                    </c:forEach>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </main>
 

@@ -98,7 +98,8 @@
 
 .tabcontent .table input[type=text],
 .tabcontent .film-type input[type=text],
-.tabcontent .film-info input[type=text] {
+.tabcontent .film-info input[type=text],
+.tabcontent .film-info input[type=file] {
     background-color: #fff;
     border: 1px solid rgba(0, 40, 100, .12);
     border-radius: 3px;

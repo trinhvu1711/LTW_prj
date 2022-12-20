@@ -169,7 +169,7 @@
 									<label for="">Đường dẫn tĩnh</label> <input type="text" name="slug">
 								</div>
 								<div class="mt-15">
-									<label for="">Ảnh thumb</label> <input type="text" name="thumb">
+									<label for="">Ảnh thumb</label> <input type="file	" name="thumb">
 								</div>
 								<div class="mt-15">
 									<label for="">Ảnh poster</label> <input type="text" name="poster">
@@ -336,11 +336,11 @@
 											chiếu rạp</label>
 									</div>
 									<div class="form-check mt-8">
-										<input type="checkbox" value="is_copyright"> <label>Có
+										<input type="checkbox" name="is_copyright"> <label>Có
 											bản quyền phim</label>
 									</div>
 									<div class="form-check mt-8">
-										<input type="checkbox" value="is_sensitive_content"> <label>Cảnh
+										<input type="checkbox" name="is_sensitive_content"> <label>Cảnh
 											báo nội dung người lớn</label>
 									</div>
 									<div class="form-check mt-8">
