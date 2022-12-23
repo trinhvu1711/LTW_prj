@@ -358,7 +358,7 @@ main .breadcrumbs li.divider {
 .btn {
   padding: 4px 8px;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
   color: var(--bs-indigo);
   display: inline-block;
   font-size: 18px;
@@ -586,6 +586,11 @@ main .breadcrumbs li.divider {
   display: flex;
   align-items: center;
   padding: 16px 12px 0px 12px;
+}
+
+.tabcontent .table td:last-child,
+.tabcontent .table th:last-child {
+	border-right: none;
 }
 
 .crud-table img {

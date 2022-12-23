@@ -37,21 +37,15 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int count = (int) request.getSession().getAttribute("c");
-//		HttpSession session = request.getSession();
-//		User u = (User) session.getAttribute("account");
-//		if (u == null) {
-//			response.sendRedirect(request.getContextPath()+"/login");
-//			return;	
-//		}
-//		request.setAttribute("account", u);
 		request.getSession().setAttribute("count", count);
+		MovieDAO md = new MovieDAO();
 		
-		List<Movie> phimle = new MovieDAO().getByType(21314);
-		List<Movie> phimbo = new MovieDAO().getByType(23432);
-		List<Movie> recommend = new MovieDAO().getRecommend();
+		List<Movie> phimle = md.getByType(21314);
+		List<Movie> phimbo = md.getByType(23432);
+		List<Movie> recommend = md.getRecommend();
 		
-		List<Movie> topphimle = new MovieDAO().getByTopType(21314);
-		List<Movie> topphimbo = new MovieDAO().getByTopType(23432);
+		List<Movie> topphimle = md.getByTopType(21314);
+		List<Movie> topphimbo = md.getByTopType(23432);
 		
 		request.setAttribute("recommend", recommend);
 		request.setAttribute("phimbo", phimbo);

@@ -1,4 +1,4 @@
-package controller;
+package controller.movie;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,29 +6,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Category;
-import model.Movie;
-import model.Region;
 import model.User;
 
 import java.io.IOException;
-import java.util.List;
 
-import dal.CategoryDAO;
 import dal.MovieFollowDao;
-import dal.MovieHistoryDao;
-import dal.RegionDao;
 
 /**
- * Servlet implementation class FilmHistoryServlet
+ * Servlet implementation class FollowServlet
  */
-public class FilmHistoryServlet extends HttpServlet {
+public class FollowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FilmHistoryServlet() {
+    public FollowServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +30,6 @@ public class FilmHistoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int count = (int) request.getSession().getAttribute("c");
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("account");
 		if (u == null) {
@@ -45,17 +37,17 @@ public class FilmHistoryServlet extends HttpServlet {
 			return;
 		}
 		request.setAttribute("account", u);
-//		request.getSession().setAttribute("count", count);
+		String id_raw = request.getParameter("id");
+		try {
+			int id = Integer.parseInt(id_raw);
+			String username = u.getUsername();
+			new MovieFollowDao().add(id, username);
+			request.setAttribute("id", id_raw);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
-		CategoryDAO td = new CategoryDAO();
-		RegionDao rd = new RegionDao();
-		List<Category> c = td.getAll();
-		List<Region> r = rd.getAll();
-		request.setAttribute("r", r);
-		request.setAttribute("c", c);
-		List<Movie> list = new MovieHistoryDao().get(u.getUsername());
-		request.setAttribute("phim", list);
-		request.getRequestDispatcher("filmhistory.jsp").forward(request, response);
+		request.getRequestDispatcher("detail").forward(request, response);
 	}
 
 	/**

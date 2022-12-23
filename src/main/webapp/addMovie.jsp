@@ -16,10 +16,9 @@
 			<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 			<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 			<script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
-			<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+				integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+				crossorigin="anonymous" referrerpolicy="no-referrer" />
 			<title>Movies</title>
 		</head>
 
@@ -169,15 +168,25 @@
 									<label for="">Đường dẫn tĩnh</label> <input type="text" name="slug">
 								</div>
 								<div class="mt-15">
-									<label for="">Ảnh thumb</label> <input type="file	" name="thumb">
+									<label for="">Ảnh thumb</label>
+									<div class="fl-0">
+										<input type="text" name="thumb-url" id="thumb-url">
+										<input type="file" name="thumb-btn" id="thumb-btn" style="display:none;"/>
+										<label class="btn btn-info reset-lb" for="thumb-btn">Browse</label>
+									</div>
 								</div>
 								<div class="mt-15">
-									<label for="">Ảnh poster</label> <input type="text" name="poster">
+									<label for="">Ảnh poster</label>
+									<div class="fl-0">
+										<input type="text" name="poster-url" id="poster-url">
+										<input type="file" name="poster-btn" id="poster-btn" style="display:none;"/>
+										<label class="btn btn-info reset-lb" for="poster-btn">Browse</label>
+									</div>
 								</div>
 								<div class="mt-15">
 									<label for="">Nội dung</label>
 									<textarea name="content" id="editor" placeholder="Nội dung...">
-                        </textarea>
+                        			</textarea>
 								</div>
 								<div class="mt-15">
 									<label for="">Thông báo / ghi chú</label> <input type="text" name="notify">
@@ -258,10 +267,10 @@
 									</div>
 								</div>
 								<div class="mt-15">
-									<label>Đạo diễn</label> <select class="js-multiple" 
-										multiple="multiple" style="width: 100%" name="director">
+									<label>Đạo diễn</label> <select class="js-multiple" multiple="multiple"
+										style="width: 100%" name="director">
 										<c:forEach items="${requestScope.d}" var="d">
-											<option value="${d.id}" >${d.name}</option>
+											<option value="${d.id}">${d.name}</option>
 										</c:forEach>
 									</select>
 								</div>
@@ -306,8 +315,10 @@
 										</thead>
 										<tbody id="table-body">
 											<tr>
-												<td><input type="text" placeholder=" tập 1" value="tập 1" name="episode_name"></td>
-												<td><input type="text" placeholder=" tap-1" value="tap-1" name="episode_slug"></td>
+												<td><input type="text" placeholder=" tập 1" value="tập 1"
+														name="episode_name"></td>
+												<td><input type="text" placeholder=" tap-1" value="tap-1"
+														name="episode_slug"></td>
 												<td><input type="text" name="link"></td>
 												<td>
 													<button class="lead" onclick="remove_tr(this)">
@@ -351,17 +362,17 @@
 							</div>
 
 						</div>
-				</div>
-				<div class="form-btn">
-					<button class="lead btn btn-teal" type="submit">
-						<i class="las la-save"></i>Save and back
-					</button>
-					<button class="lead" type="reset">
-						<a href="movie" class="btn btn-gray">Cancel</a>
-					</button>
-				</div>
-				</form>
-				<!-- DEFAULT BOX -->
+
+						<div class="form-btn">
+							<button class="lead btn btn-teal" type="submit">
+								<i class="las la-save"></i>Save and back
+							</button>
+							<button class="lead" type="reset">
+								<a href="movie" class="btn btn-gray">Cancel</a>
+							</button>
+						</div>
+					</form>
+					<!-- DEFAULT BOX -->
 			</section>
 			<!-- CONTENT -->
 			<script>
@@ -408,24 +419,37 @@
 				}
 			</script>
 			<script type="text/javascript">
-	let alert_close_icons = document.querySelectorAll('.alert>.close');
-	if(alert_close_icons)
-	{
-	  alert_close_icons.forEach((alert_close_icon)=>{
-	    alert_close_icon.addEventListener('click', function()
-	    {
-	      this.closest('.alert').classList.add('close');
-	      
-	      this.closest('.alert').addEventListener('transitionend', function(event){
-	        if(event.propertyName=='transform')
-	        {
-	          this.remove();
-	        }
-	      });
-	    });
-	  });
-	}
-    </script>
+				let alert_close_icons = document.querySelectorAll('.alert>.close');
+				if (alert_close_icons) {
+					alert_close_icons.forEach((alert_close_icon) => {
+						alert_close_icon.addEventListener('click', function () {
+							this.closest('.alert').classList.add('close');
+
+							this.closest('.alert').addEventListener('transitionend', function (event) {
+								if (event.propertyName == 'transform') {
+									this.remove();
+								}
+							});
+						});
+					});
+				}
+			</script>
+			
+			<script type="text/javascript">
+				const actualBtn = document.getElementById('thumb-btn');
+				const fileChosen = document.getElementById('thumb-url');
+				actualBtn.addEventListener('change', function(){
+			 		 fileChosen.value = this.files[0].name
+				})
+			</script>
+			
+			<script type="text/javascript">
+				const actualBtn2 = document.getElementById('poster-btn');
+				const fileChosen2 = document.getElementById('poster-url');
+				actualBtn2.addEventListener('change', function(){
+			 		 fileChosen2.value = this.files[0].name
+				})
+			</script>
 		</body>
 
 		</html>

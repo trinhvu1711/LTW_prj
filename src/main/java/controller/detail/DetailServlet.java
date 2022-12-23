@@ -84,7 +84,7 @@ public class DetailServlet extends HttpServlet {
 			request.setAttribute("r", r);
 			request.setAttribute("c", c);
 			request.setAttribute("region", region);
-			request.setAttribute("c	egory", category);
+			request.setAttribute("category", category);
 			request.setAttribute("directors", directors);
 			request.setAttribute("actors", actors);
 			System.out.println(actors.size());

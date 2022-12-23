@@ -95,11 +95,20 @@ public class AddMovieServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = (int) (Math.floor(Math.random() * 899999) + 100000);
+		CategoryDAO categoryDAO = new CategoryDAO();
+		TypeDAO typeDAO = new TypeDAO();
+		DirectorDao directorDao = new DirectorDao();
+		StatusDAO statusDAO = new StatusDAO();
+		RegionDao regionDao = new RegionDao();
+
 		
 		boolean ok = true;
 		String slug = request.getParameter("slug");
-		String poster = request.getParameter("poster");
-		String thumb = request.getParameter("thumb");
+		String poster = request.getParameter("poster-url");
+		String poster_btn = request.getParameter("poster-btn");
+		String thumb = request.getParameter("thumb-url");
+		String thumb_btn = request.getParameter("thumb-btn");
+		System.out.println(thumb_btn+" "+poster_btn);
 		String content = request.getParameter("content");
 		String notify = request.getParameter("notify");
 		String showtimes = request.getParameter("showtimes");
@@ -113,6 +122,7 @@ public class AddMovieServlet extends HttpServlet {
 
 		String type_raw = request.getParameter("type");
 		String status_raw = request.getParameter("status");
+		
 		String[] category_raw = request.getParameterValues("category");
 		String[] region_raw = request.getParameterValues("region");
 		String[] actor_raw = request.getParameterValues("actor");
@@ -141,9 +151,15 @@ public class AddMovieServlet extends HttpServlet {
 			} catch (Exception e) {
 				ok = false;
 			}
-
-			Type type = new TypeDAO().getById(type_id);
-			Status status = new StatusDAO().getById(status_id);
+//			if (thumb == null || thumb_btn.equals(""))
+			if (thumb_btn != null && !thumb_btn.equals("")) {
+				request.setAttribute(name, thumb_btn);
+				request.getRequestDispatcher("uploadimage").forward(request, response);
+				return;
+			}
+			
+			Type type = typeDAO.getById(type_id);
+			Status status = statusDAO.getById(status_id);
 			
 			if (type == null || status == null)
 				ok = false;
@@ -153,19 +169,19 @@ public class AddMovieServlet extends HttpServlet {
 
 				if (category_raw != null) {
 					int[] category = toIntArr(category_raw);
-					List<Category> categories = new CategoryDAO().getAllById(category);
+					List<Category> categories = categoryDAO.getAllById(category);
 					m.setCategories(categories);
 					new MovieCategoryDao().addAll(m);
 				}
 				if (region_raw != null) {
 					int[] region = toIntArr(region_raw);
-					List<Region> regions = new RegionDao().getAllById(region);
+					List<Region> regions = regionDao.getAllById(region);
 					m.setRegions(regions);
 					new MovieRegionDao().addAll(m);
 				}
 				if (director_raw != null) {
 					int[] director = toIntArr(director_raw);
-					List<Director> directors = new DirectorDao().getAllById(director);
+					List<Director> directors = directorDao.getAllById(director);
 					m.setDirectors(directors);
 					new MovieDirectorDao().addAll(m);
 				}
@@ -187,7 +203,6 @@ public class AddMovieServlet extends HttpServlet {
 					m.setActors(actors);
 					new MovieActorDao().addAll(m);
 				}
-
 				m.setPoster_url(poster);
 				m.setNotify(notify);
 				m.setShowtimes(showtimes);

@@ -96,6 +96,12 @@
     color: #1B2E4A;
 }
 
+.reset-lb{
+	font-weight: normal !important;
+    line-height: normal !important;
+    color: #fff !important;
+}
+
 .tabcontent .table input[type=text],
 .tabcontent .film-type input[type=text],
 .tabcontent .film-info input[type=text],
@@ -127,7 +133,6 @@
     margin-top: 10px;
     display: flex;
     gap: 10px;
-    padding-left: 20px;
     /* height: 100px; */
     margin-bottom: 100px;
 }
@@ -176,4 +181,22 @@
 
 .alert{
 	background: var(--bs-light);
+}
+
+.fl-0{
+	display: flex;
+	gap : 0;
+}
+
+.btn-info {
+    background-color: #467fd0;
+    border-color: #467fd0;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #316bbf;
+    border-color: #2e66b5;
+    color: #fff;
+    cursor: pointer;
 }

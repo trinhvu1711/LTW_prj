@@ -1,16 +1,12 @@
 package dal;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import model.Movie;
-import model.Tag;
-import model.Type;
 
 public class MovieDAO extends DBContext {
 	public List<Movie> getAll() {
@@ -198,12 +194,6 @@ public class MovieDAO extends DBContext {
 				m.setStudios(new MovieStudioDao().get(m.getId()));
 				m.setEpisode(new EpisodeDao().get(m.getId()));
 				m.setTags(new MovieTagDao().get(m.getId()));
-//				m.setView_day(new MovieViewDao().getViewByDay(id, new Date(System.currentTimeMillis())));
-//				m.setView_month(new MovieViewDao().getViewByYear(id, new Date(System.currentTimeMillis())));
-//				m.setView_total(new MovieViewDao().getView(id));
-//				m.setView_week(new MovieViewDao().getViewByWeek(id, new Date(System.currentTimeMillis())));
-				
-
 				list.add(m);
 			}
 		} catch (SQLException e) {
@@ -238,7 +228,6 @@ public class MovieDAO extends DBContext {
 				m.setQuality(rs.getString("quality"));
 				m.setLanguage(rs.getString("language"));
 				m.setPublish_year(rs.getString("publish_year"));
-
 				list.add(m);
 			}
 		} catch (SQLException e) {
@@ -285,10 +274,6 @@ public class MovieDAO extends DBContext {
 				m.setStudios(new MovieStudioDao().get(m.getId()));
 				m.setEpisode(new EpisodeDao().get(m.getId()));
 				m.setTags(new MovieTagDao().get(m.getId()));
-//				m.setView_day(new MovieViewDao().getViewByDay(id, new Date(System.currentTimeMillis())));
-//				m.setView_month(new MovieViewDao().getViewByYear(id, new Date(System.currentTimeMillis())));
-//				m.setView_total(new MovieViewDao().getView(id));
-//				m.setView_week(new MovieViewDao().getViewByWeek(id, new Date(System.currentTimeMillis())));
 			
 
 				list.add(m);
@@ -337,12 +322,6 @@ public class MovieDAO extends DBContext {
 				m.setStudios(new MovieStudioDao().get(m.getId()));
 				m.setEpisode(new EpisodeDao().get(m.getId()));
 				m.setTags(new MovieTagDao().get(m.getId()));
-//				m.setView_day(new MovieViewDao().getViewByDay(id, new Date(System.currentTimeMillis())));
-//				m.setView_month(new MovieViewDao().getViewByYear(id, new Date(System.currentTimeMillis())));
-//				m.setView_total(new MovieViewDao().getView(id));
-//				m.setView_week(new MovieViewDao().getViewByWeek(id, new Date(System.currentTimeMillis())));
-			
-
 				list.add(m);
 			}
 		} catch (SQLException e) {
@@ -389,11 +368,6 @@ public class MovieDAO extends DBContext {
 				m.setStudios(new MovieStudioDao().get(m.getId()));
 				m.setEpisode(new EpisodeDao().get(m.getId()));
 				m.setTags(new MovieTagDao().get(m.getId()));
-//				m.setView_day(new MovieViewDao().getViewByDay(id, new Date(System.currentTimeMillis())));
-//				m.setView_month(new MovieViewDao().getViewByYear(id, new Date(System.currentTimeMillis())));
-//				m.setView_total(new MovieViewDao().getView(id));
-//				m.setView_week(new MovieViewDao().getViewByWeek(id, new Date(System.currentTimeMillis())));
-			
 
 				list.add(m);
 			}
