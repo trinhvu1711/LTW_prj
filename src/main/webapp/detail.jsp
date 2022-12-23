@@ -5,51 +5,8 @@
 
         <head>
             <meta charSet="utf-8" />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <meta http-equiv="content-language" content="en" />
-            <meta name="robots" content="index,follow" />
-            <meta name="revisit-after" content="1 days" />
-            <meta name="ROBOTS" content="index,follow" />
-            <meta name="googlebot" content="index,follow" />
-            <meta name="BingBOT" content="index,follow" />
-            <meta name="yahooBOT" content="index,follow" />
-            <meta name="slurp" content="index,follow" />
-            <meta name="msnbot" content="index,follow" />
-            <meta name="csrf-token" content="v2BTcT1i3uwxuW3hpQ2eEPao6UiSyCyzp9eyflO0">
-            <meta property="fb:app_id" content="" />
             <link rel="shortcut icon" href="" type="image/png" />
             <title>${movie.name}</title>
-            <meta name="description"
-                content="Lần Đầu Yêu Anh là một bộ phim về tình yêu tuổi trẻ của đạo diễn Thẩm Thấm Nguyên với sự tham gia của Điền Hi Vi và Vương Tinh Việt.Bộ phim kể về Lư V...">
-            <meta name="keywords" content="Lần Đầu Yêu Anh, Special: First Love">
-            <link rel="canonical" href="https://default.ophimcms.com/phim/lan-dau-yeu-anh" />
-            <link rel="prev" href="https://default.ophimcms.com" />
-            <meta property="og:site_name" content="Ophim.TV" />
-            <meta property="og:title" content="${movie.name}" />
-            <meta property="og:type" content="movie" />
-            <meta property="og:locale" content="vi-VN" />
-            <meta property="og:updated_time" content="2022-12-17 15:50:26" />
-            <meta property="og:url" content="https://default.ophimcms.com/phim/lan-dau-yeu-anh" />
-            <meta property="og:description"
-                content="Lần Đầu Yêu Anh là một bộ phim về tình yêu tuổi trẻ của đạo diễn Thẩm Thấm Nguyên với sự tham gia của Điền Hi Vi và Vương Tinh Việt.Bộ phim kể về Lư V..." />
-            <meta property="og:image"
-                content="https://default.ophimcms.com/storage/images/lan-dau-yeu-anh/lan-dau-yeu-anh-thumb.jpg" />
-            <meta property="og:image"
-                content="https://default.ophimcms.com/storage/images/lan-dau-yeu-anh/lan-dau-yeu-anh-poster.jpg" />
-
-            <meta name="twitter:site" content="Ophim.TV" />
-            <meta name="twitter:title" content="${movie.name}" />
-            <meta name="twitter:card" content="movie" />
-            <meta name="twitter:image"
-                content="https://default.ophimcms.com/storage/images/lan-dau-yeu-anh/lan-dau-yeu-anh-thumb.jpg" />
-            <meta name="twitter:description"
-                content="Lần Đầu Yêu Anh là một bộ phim về tình yêu tuổi trẻ của đạo diễn Thẩm Thấm Nguyên với sự tham gia của Điền Hi Vi và Vương Tinh Việt.Bộ phim kể về Lư V..." />
-            <meta name="twitter:url" content="https://default.ophimcms.com/phim/lan-dau-yeu-anh" />
-            <script
-                type="application/ld+json">{"@context":"https://schema.org","name":"Phim hay mới cập nhật 2022","description":"Ophim.TV","image":null}</script>
-            <script
-                type="application/ld+json">{"@context":"https://schema.org","@type":"movie","name":"${movie.name}","description":"Lần Đầu Yêu Anh là một bộ phim về tình yêu tuổi trẻ của đạo diễn Thẩm Thấm Nguyên với sự tham gia của Điền Hi Vi và Vương Tinh Việt.Bộ phim kể về Lư V...","url":"https://default.ophimcms.com/phim/lan-dau-yeu-anh","image":["https://default.ophimcms.com/storage/images/lan-dau-yeu-anh/lan-dau-yeu-anh-thumb.jpg","https://default.ophimcms.com/storage/images/lan-dau-yeu-anh/lan-dau-yeu-anh-poster.jpg"],"dateCreated":"2022-12-17T15:50:26.000000Z","director":"Shen Qin Yuan"}</script>
-
             <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css">
             <link rel="stylesheet" href="assets/css/movie-icon.css">
@@ -64,6 +21,7 @@
             <link rel="stylesheet" href="assets/css/swiper.css">
             <link rel="stylesheet" href="assets/css/style926f.css?ver=2.45">
             <link rel="stylesheet" href="assets/css/responsivepv.css">
+            <link rel="stylesheet" href="assets/css/comment.css">
             <link rel="stylesheet" href="assets/css/custom926f.css?ver=2.45">
 			<link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
 
@@ -471,10 +429,30 @@
                                                             <span class="text_dv">Bình luận</span>
                                                         </div>
                                                     </div>
-                                                    <div class="block-content pt bin-bg">
-                                                        <div class="fb-comments"
-                                                            data-href="https://default.ophimcms.com/phim/lan-dau-yeu-anh"
-                                                            data-width="100%" data-num-posts="5"></div>
+                                                    <div id="content-comment">
+                                                        <div class="comment-input">
+                                                        	<div class="user-avatar">
+                                                        		<img class="user-avatar-img" alt="" src="">
+                                                        	</div>
+                                                        	<div class="ci-form">
+                                                        		<div class="user-name">
+                                                        			<span class="link-highlight">name</span>
+                                                        		</div>
+                                                        		<form class="preform comment-form" action="">
+                                                        			<textarea class="form-control form-control-textarea" name="content" maxlength="3000" placeholder="Để lại bình luận"></textarea>
+                                                        			<div class="ci-buttons" id="df-cm-button">
+                                                        				<div class="ci-b-left"></div>
+                                                        				<div class="ci-b-right">
+
+                                                        					<div class="cb-li">
+                            													<button class="btn btn-sm btn-warning ml-2">Comment</button>
+                       														</div>
+                                                        				</div>
+                                                        			</div>
+                                                        		</form>
+                                                        	</div>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

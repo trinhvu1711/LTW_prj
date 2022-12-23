@@ -685,4 +685,37 @@
     <url-pattern>/UploadImageServlet</url-pattern>
     <url-pattern>/uploadimage</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VisitServlet</display-name>
+    <servlet-name>VisitServlet</servlet-name>
+    <servlet-class>controller.home.VisitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VisitServlet</servlet-name>
+    <url-pattern>/VisitServlet</url-pattern>
+    <url-pattern>/visit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCommentServlet</display-name>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <servlet-class>controller.comment.AddCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <url-pattern>/AddCommentServlet</url-pattern>
+    <url-pattern>/addcomment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCommentServlet</display-name>
+    <servlet-name>DeleteCommentServlet</servlet-name>
+    <servlet-class>controller.comment.DeleteCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCommentServlet</servlet-name>
+    <url-pattern>/DeleteCommentServlet</url-pattern>
+    <url-pattern>/deletecomment</url-pattern>
+  </servlet-mapping>
 </web-app>

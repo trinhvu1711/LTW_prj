@@ -1,4 +1,4 @@
-package controller;
+package controller.home;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,20 +6,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
-
-import dal.MovieViewDao;
 
 /**
- * Servlet implementation class MovieViewServlet
+ * Servlet implementation class VisitServlet
  */
-public class MovieViewServlet extends HttpServlet {
+public class VisitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieViewServlet() {
+    public VisitServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +25,7 @@ public class MovieViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Date date = new Date(System.currentTimeMillis());
-		String id_raw = request.getParameter("id");
-		try {
-			int id = Integer.parseInt(id_raw);
-			new MovieViewDao().addView(date, id);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		
 	}
 
 	/**

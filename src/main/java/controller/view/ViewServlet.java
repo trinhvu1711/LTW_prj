@@ -69,7 +69,7 @@ public class ViewServlet extends HttpServlet {
 				tap = Integer.parseInt(xtap);
 			}
 			int id = Integer.parseInt(id_raw);
-//			new MovieViewDao().addView(new Date(System.currentTimeMillis()), id);
+			new MovieViewDao().addView(id);
 			Movie movie = new MovieDAO().get(id);
 			List<Episode> episode = movie.getEpisode();
 			request.setAttribute("movie", movie);

@@ -76,12 +76,12 @@ public class MovieDAO extends DBContext {
 
 	public Movie get(int id) {
 		String sql = "select * from movie where id=?";
+		Movie m = new Movie();
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
-				Movie m = new Movie();
 				m.setId(rs.getInt("id"));
 				m.setName(rs.getString("name"));
 				m.setOrigin_name(rs.getString("origin_name"));
@@ -104,23 +104,23 @@ public class MovieDAO extends DBContext {
 				m.setIs_sensitive_content(rs.getInt("is_sensitive_content"));
 				m.setIs_recommended(rs.getInt("is_recommended"));
 				m.setTrailer_url(rs.getString("trailer_url"));
+				
 				m.setActors(new MovieActorDao().get(m.getId()));
 				m.setCategories(new MovieCategoryDao().get(m.getId()));
 				m.setDirectors(new MovieDirectorDao().get(m.getId()));
 				m.setRegions(new MovieRegionDao().get(m.getId()));
 				m.setStudios(new MovieStudioDao().get(m.getId()));
 				m.setEpisode(new EpisodeDao().get(m.getId()));
-				m.setTags(new MovieTagDao().get(m.getId()));
-//				m.setView_day(new MovieViewDao().getViewByDay(id, new Date(System.currentTimeMillis())));
-//				m.setView_month(new MovieViewDao().getViewByYear(id, new Date(System.currentTimeMillis())));
-//				m.setView_total(new MovieViewDao().getView(id));
-//				m.setView_week(new MovieViewDao().getViewByWeek(id, new Date(System.currentTimeMillis())));
-				return m;
+				m.setTags(new MovieTagDao().get(m.getId()));			
+				
 			}
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
-		return null;
+		m.setView_day(new MovieViewDao().getViewByDay(id));
+		m.setView_month(new MovieViewDao().getViewByMonth(id));
+		m.setView_total(new MovieViewDao().getView(id));
+		return m;
 	}
 
 	
@@ -504,7 +504,7 @@ public class MovieDAO extends DBContext {
 	
 	public List<Movie> getByTopType(int id) {
 		List<Movie> list = new ArrayList<>();
-		String sql = "select Top 5 * from movie m join type t on m.type_id = t.id  where t.id = ? order by view_total";
+		String sql = "select Top 5 * from movie m join type t on m.type_id = t.id  where t.id = ? order by view_total desc";
 		try {
 			PreparedStatement st = connection.prepareStatement(sql);
 			st.setInt(1, id);
@@ -528,10 +528,9 @@ public class MovieDAO extends DBContext {
 				m.setQuality(rs.getString("quality"));
 				m.setLanguage(rs.getString("language"));
 				m.setPublish_year(rs.getString("publish_year"));
-//				m.setView_day(new MovieViewDao().getViewByDay(id, new Date(System.currentTimeMillis())));
-//				m.setView_month(new MovieViewDao().getViewByYear(id, new Date(System.currentTimeMillis())));
-//				m.setView_total(new MovieViewDao().getView(id));
-//				m.setView_week(new MovieViewDao().getViewByWeek(id, new Date(System.currentTimeMillis())));
+				m.setView_day(new MovieViewDao().getViewByDay(m.getId()));
+				m.setView_month(new MovieViewDao().getViewByMonth(m.getId()));
+				m.setView_total(new MovieViewDao().getView(m.getId()));
 				list.add(m);
 			}
 		} catch (SQLException e) {
@@ -562,14 +561,15 @@ public class MovieDAO extends DBContext {
 	public static void main(String[] args) {
 		System.out.println("run");
 
-		List<Movie> list = new MovieDAO().getByAllType(21314);
-		List<Movie> movie = new MovieDAO().getListByPage(list, 24, 27);
+//		List<Movie> list = new MovieDAO().getByAllType(21314);
+//		List<Movie> movie = new MovieDAO().getListByPage(list, 24, 27);
 //		System.out.println(list.size());
 //		for (Movie m : movie) {
 //			System.out.println(m.toString());
 //		}
 //		System.out.println(new MovieDAO().get(893918).getEpisode().size());
 //		System.out.println(new MovieDAO().get(893918));
-		System.out.println(new MovieDAO().search("th").size());
+//		System.out.println(new MovieDAO().search("th").size());
+//		System.out.println(new MovieDAO().get(115876).getView_total());
 	}
 }
