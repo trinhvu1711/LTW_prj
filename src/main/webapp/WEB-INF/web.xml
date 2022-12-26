@@ -718,4 +718,15 @@
     <url-pattern>/DeleteCommentServlet</url-pattern>
     <url-pattern>/deletecomment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangeAvatar</display-name>
+    <servlet-name>ChangeAvatar</servlet-name>
+    <servlet-class>controller.image.ChangeAvatar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeAvatar</servlet-name>
+    <url-pattern>/ChangeAvatar</url-pattern>
+    <url-pattern>/changeavatar</url-pattern>
+  </servlet-mapping>
 </web-app>

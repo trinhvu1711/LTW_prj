@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Category;
+import model.ImageProfile;
 import model.Movie;
 import model.Region;
 import model.User;
@@ -15,8 +16,10 @@ import java.io.IOException;
 import java.util.List;
 
 import dal.CategoryDAO;
+import dal.ImageProfileDao;
 import dal.MovieDAO;
 import dal.RegionDao;
+import dal.VisitDao;
 
 /**
  * Servlet implementation class HomeServlet
@@ -38,8 +41,16 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		int count = (int) request.getSession().getAttribute("c");
 //		request.getSession().setAttribute("count", count);
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("account");
+		if (u != null) {
+			request.setAttribute("account", u);
+			ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
+			request.setAttribute("image", imageProfile);
+		}
 		MovieDAO md = new MovieDAO();
-		
+		VisitDao vd = new VisitDao();
+		vd.addVisit();
 		List<Movie> phimle = md.getByType(21314);
 		List<Movie> phimbo = md.getByType(23432);
 		List<Movie> recommend = md.getRecommend();

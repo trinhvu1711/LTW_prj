@@ -7,30 +7,7 @@
             <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <meta http-equiv="content-language" content="en" />
-            <meta name="robots" content="index,follow" />
-            <meta name="revisit-after" content="1 days" />
-            <meta name="ROBOTS" content="index,follow" />
-            <meta name="googlebot" content="index,follow" />
-            <meta name="BingBOT" content="index,follow" />
-            <meta name="yahooBOT" content="index,follow" />
-            <meta name="slurp" content="index,follow" />
-            <meta name="msnbot" content="index,follow" />
-            <meta name="csrf-token" content="2jYJDgoHGSkpyqGMaE910rLb36GSyGJ4EcAu557F">
-            <meta property="fb:app_id" content="" />
-            <link rel="shortcut icon" href="" type="image/png" />
             <title>Phim hay mới cập nhật 2022</title>
-            <meta name="description" content="Ophim.TV">
-            <meta name="keywords" content="Ophim.TV">
-            <link rel="canonical" href="https://default.ophimcms.com" />
-            <meta property="og:title" content="Phim hay mới cập nhật 2022" />
-            <meta property="og:description" content="Ophim.TV" />
-            <meta property="og:url" content="current" />
-            <meta property="og:site_name" content="Ophim.TV" />
-
-            <meta name="twitter:site" content="Ophim.TV" />
-            <script
-                type="application/ld+json">{"@context":"https://schema.org","name":"Phim hay mới cập nhật 2022","description":"Ophim.TV","image":null}</script>
-
             <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css">
             <link rel="stylesheet" href="assets/css/movie-icon.css">
@@ -119,8 +96,12 @@
                                 </form>
                             </div>
                             <div class="navbar-cell stretch">
-                                <div class="profile">
-                                    <img src="./asserts/img/admin.png" alt="">
+                               <div class="profile">
+                                    <c:set value="${image.path}" var="link"></c:set>
+									<c:if test="${(link == null) || (link == '')}">
+										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+									</c:if>
+                                    <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
                                                 Thông tin</a></li>

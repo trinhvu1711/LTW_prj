@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Category;
+import model.ImageProfile;
 import model.Movie;
 import model.Region;
 import model.User;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 import dal.CategoryDAO;
+import dal.ImageProfileDao;
 import dal.MovieFollowDao;
 import dal.MovieHistoryDao;
 import dal.RegionDao;
@@ -44,6 +46,8 @@ public class FilmHistoryServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());
+		request.setAttribute("image", imageProfile);
 		request.setAttribute("account", u);
 //		request.getSession().setAttribute("count", count);
 		

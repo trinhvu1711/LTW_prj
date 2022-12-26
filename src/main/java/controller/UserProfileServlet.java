@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Category;
+import model.ImageProfile;
 import model.Region;
 import model.User;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 import dal.CategoryDAO;
+import dal.ImageProfileDao;
 import dal.RegionDao;
 
 /**
@@ -42,6 +44,7 @@ public class UserProfileServlet extends HttpServlet {
 			return;
 		}
 		request.setAttribute("account", u);
+		
 //		request.getSession().setAttribute("count", count);
 		
 		CategoryDAO td = new CategoryDAO();
@@ -50,7 +53,8 @@ public class UserProfileServlet extends HttpServlet {
 		List<Region> r = rd.getAll();
 		request.setAttribute("r", r);
 		request.setAttribute("c", c);
-		
+		ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
+		request.setAttribute("image", imageProfile);
 		request.getRequestDispatcher("userprofile.jsp").forward(request, response);
 	}
 

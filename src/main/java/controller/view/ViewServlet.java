@@ -5,16 +5,22 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Category;
+import model.Comment;
 import model.Episode;
+import model.ImageProfile;
 import model.Movie;
 import model.Region;
+import model.User;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
 import dal.CategoryDAO;
+import dal.CommentDao;
+import dal.ImageProfileDao;
 import dal.MovieDAO;
 import dal.MovieViewDao;
 import dal.RegionDao;
@@ -37,7 +43,14 @@ public class ViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("account");
+		if (u != null) {
+			request.setAttribute("account", u);
+			ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
+			request.setAttribute("image", imageProfile);
+		}
+		
 		List<Movie> phimle = new MovieDAO().getByType(21314);
 		List<Movie> phimbo = new MovieDAO().getByType(23432);
 		List<Movie> recommend = new MovieDAO().getRecommend();
@@ -79,6 +92,8 @@ public class ViewServlet extends HttpServlet {
 			num = episode.size();
 			request.setAttribute("tap", tap);
 			request.setAttribute("num", num);
+			List<Comment> comments = new CommentDao().getComments(id);
+			request.setAttribute("comments", comments);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

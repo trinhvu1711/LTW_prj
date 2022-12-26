@@ -6,10 +6,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.ImageProfile;
 import model.User;
 
 import java.io.IOException;
 
+import dal.ImageProfileDao;
 import dal.MovieFollowDao;
 
 /**
@@ -36,6 +38,8 @@ public class FollowServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());
+		request.setAttribute("image", imageProfile);
 		request.setAttribute("account", u);
 		String id_raw = request.getParameter("id");
 		try {

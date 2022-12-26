@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="assets/css/responsivepv.css">
     <link rel="stylesheet" href="assets/css/custom926f.css">
 
-
+    <link rel="stylesheet" href="assets/css/comment.css">
     </head>
 
     <body>
@@ -114,9 +114,23 @@
                             </form>
                         </div>
                         <div class="navbar-cell stretch">
-                            <div class="user-acount">
-                                <div id="top-user"></div>
-                            </div>
+                            <div class="profile">
+                                    <c:set value="${image.path}" var="link"></c:set>
+									<c:if test="${(link == null) || (link == '')}">
+										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+									</c:if>
+                                    <img src="${link}" alt="">
+                                    <ul class="profile-link">
+                                        <li><a href="userprofile"><i class="las la-user-circle icon"></i>
+                                                Thông tin</a></li>
+                                        <li><a href="filmfollow"><i class="las la-user-cog icon"></i>
+                                                Phim theo dõi</a></li>
+                                        <li><a href="filmhistory"><i class="las la-history"></i>
+                                                Phim đã coi</a></li>
+                                        <li><a href="logout"><i class="las la-sign-out-alt icon"></i>
+                                                Đăng xuất</a></li>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -355,10 +369,77 @@
                                                                 class="sp-movie-icon-user-review"></i><span
                                                                 class="text_dv">Bình luận</span></h4>
                                                     </div>
-                                                    <div class="block-content pt">
-                                                        <div class="fb-comments"
-                                                            data-href="view?id=${movie.id}"
-                                                            data-width="100%" data-num-posts="5"></div>
+                                                    <div class="content-comment pt">
+                                                        <div id="content-comment">
+                                                        <div class="comment-input">
+                                                            <div class="user-avatar">
+                                                                <c:set value="${image.path}" var="link"></c:set>
+                                                                <c:if test="${(link == null) || (link == '')}">
+                                                                    <c:set value="./assets/images/defaultavatar.jpg"
+                                                                        var="link"></c:set>
+                                                                </c:if>
+                                                                <img class="user-avatar-img" alt="" src="${link}">
+                                                            </div>
+                                                            <div class="ci-form">
+                                                                <div class="user-name">
+                                                                    <span class="link-highlight">${account.name}</span>
+                                                                </div>
+                                                                <form class="preform comment-form" action="addcomment" method="post">
+                                                                    <input type="hidden" value="${movie.id}" name="movie_id">
+                                                                    <textarea class="form-control form-control-textarea"
+                                                                        name="content" maxlength="3000"
+                                                                        placeholder="Để lại bình luận" name="content"></textarea>
+                                                                    <div class="ci-buttons" id="df-cm-button">
+                                                                        <div class="ci-b-left"></div>
+                                                                        <div class="ci-b-right">
+                                                                            <div class="cb-li">
+                                                                                <button class="btn btn-sm btn-warning ml-2" type="submit">
+                                                                                	Comment
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="cw_list">
+                                                            <c:forEach items="${comments}" var="c">
+	                                                            <c:set value="${c.path}" var="link"></c:set>
+																<c:if test="${(link == null) || (link == '')}">
+																	<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+																</c:if>
+	                                                            <div class="cw_l-line" id="cm-38">
+	                                                                <div class="user-avatar">
+	                                                                    <img class="user-avatar-img"
+	                                                                        src="${link}"
+	                                                                        alt="${c.name}">
+	                                                                </div>
+	                                                                <div class="info">
+	                                                                    <div class="ihead">
+	                                                                        <c:if test="${c.username == account.username}">
+	                                                                        	<span class="link-highlight">${c.name}</span>
+	                                                                        </c:if>
+	                                                                        <c:if test="${c.username != account.username}">
+	                                                                        	<div class="user-name">${c.name}</div>
+	                                                                        </c:if>
+	                                                                    </div>
+	                                                                    <div class="ibody ">
+	                                                                        <p>${c.content}</p>
+	                                                                    </div>
+	                                                                    <c:if test="${c.username == account.username}">
+		                                                                    <div class="ibottom">
+		                                                                        <div class="ib-li ib-reply" data-id="38">
+		                                                                            <i class="mr-1"></i><a class="btn" href="deletecomment?id=${c.id}&movie_id=${movie.id}">Delete</a>
+		                                                                        </div>
+		                                                                        <div class="clearfix"></div>
+		                                                                    </div>
+	                                                                     </c:if>
+	                                                                </div>
+	                                                            </div>
+                                                            </c:forEach>
+                                                        </div>     
+                                                    </div>
+                                                </div>
                                                     </div>
                                                 </div>
                                             </div>

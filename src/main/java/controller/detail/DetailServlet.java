@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Actor;
 import model.Category;
+import model.Comment;
 import model.Director;
+import model.ImageProfile;
 import model.Movie;
 import model.MovieRegion;
 import model.Region;
@@ -19,6 +21,8 @@ import java.util.List;
 
 import dal.ActorDao;
 import dal.CategoryDAO;
+import dal.CommentDao;
+import dal.ImageProfileDao;
 import dal.MovieActorDao;
 import dal.MovieCategoryDao;
 import dal.MovieDAO;
@@ -48,13 +52,12 @@ public class DetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("account");
-//		if (u == null) {
-//			response.sendRedirect(request.getContextPath()+"/login");
-//			return;
-//		}
-		if (u != null) request.setAttribute("account", u);
+		if (u != null) {
+			request.setAttribute("account", u);
+			ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
+			request.setAttribute("image", imageProfile);
+		}
 		String id_raw = request.getParameter("id");
-		
 		try {
 			int id = Integer.parseInt(id_raw);
 			Movie movie = new MovieDAO().get(id);
@@ -87,6 +90,8 @@ public class DetailServlet extends HttpServlet {
 			request.setAttribute("category", category);
 			request.setAttribute("directors", directors);
 			request.setAttribute("actors", actors);
+			List<Comment> comments = new CommentDao().getComments(id);
+			request.setAttribute("comments", comments);
 			System.out.println(actors.size());
 			boolean check;
 			if (u != null) {

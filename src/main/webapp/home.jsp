@@ -96,7 +96,11 @@
                             </div>
                             <div class="navbar-cell stretch">
                                 <div class="profile">
-                                    <img src="./asserts/img/admin.png" alt="">
+                                    <c:set value="${image.path}" var="link"></c:set>
+									<c:if test="${(link == null) || (link == '')}">
+										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+									</c:if>
+                                    <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
                                                 Thông tin</a></li>

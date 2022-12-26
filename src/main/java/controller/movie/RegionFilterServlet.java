@@ -5,14 +5,18 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Category;
+import model.ImageProfile;
 import model.Movie;
 import model.Region;
+import model.User;
 
 import java.io.IOException;
 import java.util.List;
 
 import dal.CategoryDAO;
+import dal.ImageProfileDao;
 import dal.MovieDAO;
 import dal.RegionDao;
 
@@ -37,7 +41,13 @@ public class RegionFilterServlet extends HttpServlet {
 		MovieDAO md = new MovieDAO();
 		String id_raw =request.getParameter("id");
 		String xpage =request.getParameter("page");
-
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("account");
+		if (u != null) {
+			request.setAttribute("account", u);
+			ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
+			request.setAttribute("image", imageProfile);
+		}
 		try {
 			int id = Integer.parseInt(id_raw);
 			Region region = new RegionDao().getById(id);

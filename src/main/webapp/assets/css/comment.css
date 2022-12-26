@@ -7,7 +7,7 @@
 }
 
 .comment-input .user-avatar, .cw_list .cw_l-line .user-avatar {
-    left: 40px;
+    left: 0;
     top: 0;
     width: 40px;
     padding-bottom: 40px;
@@ -111,4 +111,46 @@ img {
     color: #212529;
     background-color: #ffc107;
     border-color: #ffc107;
+}
+
+.ci-form, .info, .replies {
+    width: calc(100% - 55px);
+    float: right;
+}
+
+.ci-form, .info, .replies {
+    width: calc(100% - 55px);
+    float: right;
+}	
+.cw_l-line .ihead {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.cw_l-line .ihead>div.user-name {
+    font-weight: 600;
+    color: #fefefe;
+}
+
+.cw_l-line .ihead>div {
+    display: inline;
+}
+
+.cw_l-line .ihead>div.time {
+    font-size: .9em;
+    color: #666;
+    margin-left: 15px;
+}
+
+.cw_l-line .ihead>div {
+    display: inline;
+}
+
+.cw_l-line .ibottom .ib-li {
+    display: inline;
+    margin-right: 1rem;
+    position: relative;
+}
+.comment-input a {
+    color: #ddd!important;
 }

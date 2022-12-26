@@ -22,7 +22,7 @@ public class VisitDao extends DBContext {
 		}
 	}
 	
-	public int getViewByYear() {
+	public int getVisitByYear() {
 		LocalDate currentdate = LocalDate.now();
 		int result = 0;
 		String sql = "select sum(num_visit) from visit where year(date) = ? ";
@@ -38,7 +38,7 @@ public class VisitDao extends DBContext {
 		return result;
 	}
 
-	public int getViewByMonth() {
+	public int getVisitByMonth() {
 		int result = 0;
 		LocalDate currentdate = LocalDate.now();
 		String sql = "select sum(num_visit) from visit where month(date) = ? and year(date) = ?";
@@ -55,7 +55,7 @@ public class VisitDao extends DBContext {
 		return result;
 	}
 
-	public int getViewByDay() {
+	public int getVisitByDay() {
 		LocalDate currentdate = LocalDate.now();
 		int result = 0;
 		String sql = "select sum(num_visit) from visit where day(date) =? and month(date) = ? and year(date) = ?";

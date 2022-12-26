@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Category;
+import model.ImageProfile;
 import model.Movie;
 import model.Region;
 import model.Type;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 import dal.CategoryDAO;
+import dal.ImageProfileDao;
 import dal.MovieDAO;
 import dal.RegionDao;
 import dal.TypeDAO;
@@ -40,11 +42,11 @@ public class TypeFilterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("account");
-//		if (u == null) {
-//			response.sendRedirect(request.getContextPath()+"/login");
-//			return;
-//		}
-		request.setAttribute("account", u);
+		if (u != null) {
+			request.setAttribute("account", u);
+			ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
+			request.setAttribute("image", imageProfile);
+		}
 		MovieDAO md = new MovieDAO();
 		String id_raw =request.getParameter("id");
 		String xpage =request.getParameter("page");

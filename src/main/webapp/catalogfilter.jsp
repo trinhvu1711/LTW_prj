@@ -56,7 +56,7 @@
             <link rel="stylesheet" href="assets/css/style926f.css?ver=2.45">
             <link rel="stylesheet" href="assets/css/responsivepv.css">
             <link rel="stylesheet" href="assets/css/custom926f.css?ver=2.45">
-
+   			<link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
 
         </head>
 
@@ -129,8 +129,22 @@
                                 </form>
                             </div>
                             <div class="navbar-cell stretch">
-                                <div class="user-acount">
-                                    <div id="top-user"></div>
+                                <div class="profile">
+                                    <c:set value="${image.path}" var="link"></c:set>
+									<c:if test="${(link == null) || (link == '')}">
+										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+									</c:if>
+                                    <img src="${link}" alt="">
+                                    <ul class="profile-link">
+                                        <li><a href="userprofile"><i class="las la-user-circle icon"></i>
+                                                Thông tin</a></li>
+                                        <li><a href="filmfollow"><i class="las la-user-cog icon"></i>
+                                                Phim theo dõi</a></li>
+                                        <li><a href="filmhistory"><i class="las la-history"></i>
+                                                Phim đã coi</a></li>
+                                        <li><a href="logout"><i class="las la-sign-out-alt icon"></i>
+                                                Đăng xuất</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -538,15 +552,30 @@
                     <img src="" alt="">
                 </div>
             </div>
+			<script type="text/javascript">
+                const profile = document.querySelector(".profile");
+                const imgProfile = profile.querySelector("img");
+                const dropdownProfile = profile.querySelector(".profile-link");
 
+                imgProfile.addEventListener("click", function () {
+                    dropdownProfile.classList.toggle("show");
+                });
+
+                window.addEventListener("click", function (e) {
+                    if (e.target !== imgProfile) {
+                        if (e.target != dropdownProfile) {
+                            if (dropdownProfile.classList.contains("show")) {
+                                dropdownProfile.classList.remove("show");
+                            }
+                        }
+                    }
+                });
+
+            </script>
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/core.min.js"></script>
             <script src="assets/js/toastr.min.js"></script>
             <script src="assets/js/function.js"></script>
-
-
-
-
         </body>
 
         </html>

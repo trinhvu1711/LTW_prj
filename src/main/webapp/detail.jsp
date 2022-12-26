@@ -1,13 +1,11 @@
+<%@page import="dal.ImageProfileDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
         <html lang="en">
 
         <head>
-            <meta charSet="utf-8" />
-            <link rel="shortcut icon" href="" type="image/png" />
-            <title>${movie.name}</title>
-            <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+           <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css">
             <link rel="stylesheet" href="assets/css/movie-icon.css">
             <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -19,12 +17,12 @@
             <link rel="stylesheet" href="assets/libs/wowslider/wowslider.css">
             <link rel="stylesheet" href="assets/libs/slidebars/slidebars.min.css">
             <link rel="stylesheet" href="assets/css/swiper.css">
-            <link rel="stylesheet" href="assets/css/style926f.css?ver=2.45">
+            <link rel="stylesheet" href="assets/css/style926f.css">
             <link rel="stylesheet" href="assets/css/responsivepv.css">
-            <link rel="stylesheet" href="assets/css/comment.css">
-            <link rel="stylesheet" href="assets/css/custom926f.css?ver=2.45">
-			<link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
+            <link rel="stylesheet" href="assets/css/custom926f.css">
+            <link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
 
+            <link rel="stylesheet" href="assets/css/comment.css">
         </head>
 
         <body>
@@ -100,7 +98,11 @@
                             </div>
                             <div class="navbar-cell stretch">
                                 <div class="profile">
-                                    <img src="./asserts/img/admin.png" alt="">
+                                    <c:set value="${image.path}" var="link"></c:set>
+                                    <c:if test="${(link == null) || (link == '')}">
+                                        <c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+                                    </c:if>
+                                    <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
                                                 Thông tin</a></li>
@@ -261,12 +263,14 @@
                                             <a class="btn btn-red btn-rounded" title="${movie.name}" href="${viewUrl}">
                                                 <i class="sp-movie-icon-camera"></i> Xem Phim </a>
                                             <c:if test="${check}">
-                                            	 <a class="btn btn-green btn-rounded" title="Theo dõi ${movie.name}" href="follow?id=${movie.id}">
-                                                <i class="sp-movie-icon-camera"></i> Theo dõi</a>
+                                                <a class="btn btn-green btn-rounded" title="Theo dõi ${movie.name}"
+                                                    href="follow?id=${movie.id}">
+                                                    <i class="sp-movie-icon-camera"></i> Theo dõi</a>
                                             </c:if>
-                                           <c:if test="${!check}">
-                                            	 <a class="btn btn-pink btn-rounded" title="Theo dõi ${movie.name}" href="unfollow?id=${movie.id}">
-                                                <i class="sp-movie-icon-camera"></i> Bỏ theo dõi</a>
+                                            <c:if test="${!check}">
+                                                <a class="btn btn-pink btn-rounded" title="Theo dõi ${movie.name}"
+                                                    href="unfollow?id=${movie.id}">
+                                                    <i class="sp-movie-icon-camera"></i> Bỏ theo dõi</a>
                                             </c:if>
                                         </div>
                                         <div class="block mt-xl">
@@ -431,28 +435,72 @@
                                                     </div>
                                                     <div id="content-comment">
                                                         <div class="comment-input">
-                                                        	<div class="user-avatar">
-                                                        		<img class="user-avatar-img" alt="" src="">
-                                                        	</div>
-                                                        	<div class="ci-form">
-                                                        		<div class="user-name">
-                                                        			<span class="link-highlight">name</span>
-                                                        		</div>
-                                                        		<form class="preform comment-form" action="">
-                                                        			<textarea class="form-control form-control-textarea" name="content" maxlength="3000" placeholder="Để lại bình luận"></textarea>
-                                                        			<div class="ci-buttons" id="df-cm-button">
-                                                        				<div class="ci-b-left"></div>
-                                                        				<div class="ci-b-right">
-
-                                                        					<div class="cb-li">
-                            													<button class="btn btn-sm btn-warning ml-2">Comment</button>
-                       														</div>
-                                                        				</div>
-                                                        			</div>
-                                                        		</form>
-                                                        	</div>
+                                                            <div class="user-avatar">
+                                                                <c:set value="${image.path}" var="link"></c:set>
+                                                                <c:if test="${(link == null) || (link == '')}">
+                                                                    <c:set value="./assets/images/defaultavatar.jpg"
+                                                                        var="link"></c:set>
+                                                                </c:if>
+                                                                <img class="user-avatar-img" alt="" src="${link}">
+                                                            </div>
+                                                            <div class="ci-form">
+                                                                <div class="user-name">
+                                                                    <span class="link-highlight">${account.name}</span>
+                                                                </div>
+                                                                <form class="preform comment-form" action="addcomment" method="post">
+                                                                    <input type="hidden" value="${movie.id}" name="movie_id">
+                                                                    <textarea class="form-control form-control-textarea"
+                                                                        name="content" maxlength="3000"
+                                                                        placeholder="Để lại bình luận" name="content"></textarea>
+                                                                    <div class="ci-buttons" id="df-cm-button">
+                                                                        <div class="ci-b-left"></div>
+                                                                        <div class="ci-b-right">
+                                                                            <div class="cb-li">
+                                                                                <button class="btn btn-sm btn-warning ml-2" type="submit">
+                                                                                	Comment
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                        
+                                                        <div class="cw_list">
+                                                            <c:forEach items="${comments}" var="c">
+	                                                            <c:set value="${c.path}" var="link"></c:set>
+																<c:if test="${(link == null) || (link == '')}">
+																	<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+																</c:if>
+	                                                            <div class="cw_l-line" id="cm-38">
+	                                                                <div class="user-avatar">
+	                                                                    <img class="user-avatar-img"
+	                                                                        src="${link}"
+	                                                                        alt="${c.name}">
+	                                                                </div>
+	                                                                <div class="info">
+	                                                                    <div class="ihead">
+	                                                                        <c:if test="${c.username == account.username}">
+	                                                                        	<span class="link-highlight">${c.name}</span>
+	                                                                        </c:if>
+	                                                                        <c:if test="${c.username != account.username}">
+	                                                                        	<div class="user-name">${c.name}</div>
+	                                                                        </c:if>
+	                                                                    </div>
+	                                                                    <div class="ibody ">
+	                                                                        <p>${c.content}</p>
+	                                                                    </div>
+	                                                                    <c:if test="${c.username == account.username}">
+		                                                                    <div class="ibottom">
+		                                                                        <div class="ib-li ib-reply" data-id="38">
+		                                                                            <i class="mr-1"></i><a class="btn" href="deletecomment?id=${c.id}&movie_id=${movie.id}">Delete</a>
+		                                                                        </div>
+		                                                                        <div class="clearfix"></div>
+		                                                                    </div>
+	                                                                     </c:if>
+	                                                                </div>
+	                                                            </div>
+                                                            </c:forEach>
+                                                        </div>     
                                                     </div>
                                                 </div>
                                             </div>
@@ -466,8 +514,6 @@
 
                                                 <div class="block-content pt">
                                                     <div id="recoment-films" class="block-items row fix-row">
-
-
                                                         <c:forEach items="${recommend}" var="phim">
                                                             <c:set var="id" value="${phim.id}"></c:set>
                                                             <c:url value="detail" var="detailUrl">
@@ -591,7 +637,7 @@
                                                             </div>
                                                         </li>
                                                     </c:forEach>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -672,7 +718,7 @@
             <script src="assets/libs/jquery-raty/jquery.raty.js"></script>
             <link href="assets/libs/jquery-raty/jquery.raty.css" rel="stylesheet" type="text/css" />
 
-			<script type="text/javascript">
+            <script type="text/javascript">
                 const profile = document.querySelector(".profile");
                 const imgProfile = profile.querySelector("img");
                 const dropdownProfile = profile.querySelector(".profile-link");

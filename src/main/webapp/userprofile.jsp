@@ -4,33 +4,6 @@
         <html lang="en">
 
         <head>
-            <meta charSet="utf-8" />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <meta http-equiv="content-language" content="en" />
-            <meta name="robots" content="index,follow" />
-            <meta name="revisit-after" content="1 days" />
-            <meta name="ROBOTS" content="index,follow" />
-            <meta name="googlebot" content="index,follow" />
-            <meta name="BingBOT" content="index,follow" />
-            <meta name="yahooBOT" content="index,follow" />
-            <meta name="slurp" content="index,follow" />
-            <meta name="msnbot" content="index,follow" />
-            <meta name="csrf-token" content="2jYJDgoHGSkpyqGMaE910rLb36GSyGJ4EcAu557F">
-            <meta property="fb:app_id" content="" />
-            <link rel="shortcut icon" href="" type="image/png" />
-            <title>Phim hay mới cập nhật 2022</title>
-            <meta name="description" content="Ophim.TV">
-            <meta name="keywords" content="Ophim.TV">
-            <link rel="canonical" href="https://default.ophimcms.com" />
-            <meta property="og:title" content="Phim hay mới cập nhật 2022" />
-            <meta property="og:description" content="Ophim.TV" />
-            <meta property="og:url" content="current" />
-            <meta property="og:site_name" content="Ophim.TV" />
-
-            <meta name="twitter:site" content="Ophim.TV" />
-            <script
-                type="application/ld+json">{"@context":"https://schema.org","name":"Phim hay mới cập nhật 2022","description":"Ophim.TV","image":null}</script>
-
             <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css">
             <link rel="stylesheet" href="assets/css/movie-icon.css">
@@ -120,7 +93,11 @@
                             </div>
                             <div class="navbar-cell stretch">
                                 <div class="profile">
-                                    <img src="./asserts/img/admin.png" alt="">
+                                    <c:set value="${image.path}" var="link"></c:set>
+									<c:if test="${(link == null) || (link == '')}">
+										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+									</c:if>
+                                    <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
                                                 Thông tin</a></li>
@@ -238,15 +215,44 @@
                                 </div>
                             </div>
                             <!-- MAIN -->
+                           <form action="changeavatar" method="post" enctype="multipart/form-data">
+                                <div class="card">
+                                    <div class="card-heading">Đổi ảnh đại diện</div>
+                                    <div class="card-body">
+                                        <div class="card-item"> 
+                                           	<div class="user-avatar">
+												<c:set value="${image.path}" var="link"></c:set>
+												<c:if test="${(link == null) || (link == '')}">
+													<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+												</c:if>
+												<img class="user-avatar-img" alt="" src="${link}">
+											</div>
+											<input type="file" id="file" name="file" accept="image/jpeg, image/png, image/jpg">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="lead" type="submit">
+                                            <div class="btn btn-teal">
+                                                <i class="las la-save"></i> Lưu
+                                            </div>
+                                        </button>
+                                        <button class="lead" type="reset">
+                                            <a href="#" class="btn btn-gray">Hủy</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                           
+                           
                             <form action="updateProfile" method="post">
                                 <div class="card">
-                                    <div class="card-heading">Update Account Info</div>
+                                    <div class="card-heading">Cập nhật thông tin</div>
                                     <div class="card-body">
                                         <input type="hidden" name="username" class="mt-8" value="${account.username}">
                                         <input type="hidden" name="pass" class="mt-8" value="${account.password}">
                                         <input type="hidden" name="pass" class="mt-8" value="${account.name}">
                                         <div class="card-item">
-                                            <label for="">Name</label> <input type="text" name="nname"
+                                            <label for="">Tên</label> <input type="text" name="nname"
                                                 value="${account.name}" class="mt-8">
                                         </div>
                                         <div class="card-item">
@@ -270,31 +276,31 @@
                             <form action="changePasswordProfile" method="post">
 
                                 <div class="card">
-                                    <div class="card-heading">Change Password</div>
+                                    <div class="card-heading">Đổi mật khẩu</div>
                                     <div class="card-body">
                                         <input type="hidden" name="username" class="mt-8" value="${account.username}">
                                         <input type="hidden" name="pass" class="mt-8" value="${account.password}">
                                         <div class="card-item">
-                                            <label for="">Old password</label> <input type="text" name="opass"
+                                            <label for="">Mật khẩu cũ</label> <input type="text" name="opass"
                                                 class="mt-8">
                                         </div>
                                         <div class="card-item">
-                                            <label for="">New password</label> <input type="text" name="npass"
+                                            <label for="">Mật khẩu mới</label> <input type="text" name="npass"
                                                 class="mt-8">
                                         </div>
                                         <div class="card-item">
-                                            <label for="">Confirm password</label> <input type="text" name="rpass"
+                                            <label for="">Xác nhận lại mật khẩu</label> <input type="text" name="rpass"
                                                 class="mt-8">
                                         </div>
                                     </div>
                                     <div class="card-footer">
                                         <button class="lead" type="submit">
                                             <div class="btn btn-teal">
-                                                <i class="las la-save"></i> Save
+                                                <i class="las la-save"></i> Lưu
                                             </div>
                                         </button>
                                         <button class="lead" type="reset">
-                                            <a href="#" class="btn btn-gray">Cancel</a>
+                                            <a href="#" class="btn btn-gray">Hủy</a>
                                         </button>
                                     </div>
                                 </div>
@@ -388,7 +394,17 @@
             <script src="assets/js/core.min.js"></script>
             <script src="assets/js/toastr.min.js"></script>
             <script src="assets/js/function.js"></script>
+			<script type="text/javascript">
+			const file = document.querySelector("#file")
+			file.addEventListener("change", function() {
+			  const reader = new FileReader()
+			  reader.addEventListener("load", () => {
+			    document.querySelector(".user-avatar-img").src = reader.result
+			  })
+			  reader.readAsDataURL(this.files[0]);
+			})
 
+			</script>
         </body>
 
         </html>
