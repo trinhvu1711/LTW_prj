@@ -16,6 +16,7 @@ Sử dụng HTML, JSP, CSS, JS, Servlet, JQuery, Microsoft SQL .
 * Thêm, sửa, xóa phim và một số thuộc tính của phim 
 * Xem thống kê phim 
 #### Đăng nhập tài khoản người dùng:
+* Đổi thông tin tài khoản, ảnh đại 
 * Theo dõi phim
 * Sửa, xóa phim đã theo dõi
 * Lịch sử xem
