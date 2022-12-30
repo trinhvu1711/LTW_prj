@@ -1,4 +1,4 @@
-package controller;
+package controller.profile;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -40,7 +40,7 @@ public class UserProfileServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("account");
 		if (u == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/form.jsp");
 			return;
 		}
 		request.setAttribute("account", u);

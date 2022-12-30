@@ -500,8 +500,154 @@ public class MovieDAO extends DBContext {
 		return list;
 	}
 
+	public List<Movie> getTopViewMonth() {
+		List<Movie> list = new ArrayList<>();
+		String sql = "select top 10 * from movie order by view_month desc";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Movie m = new Movie();
+				m.setId(rs.getInt("id"));
+				m.setName(rs.getString("name"));
+				m.setOrigin_name(rs.getString("origin_name"));
+				m.setView_month(rs.getInt("view_month"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	}
 	
+	public List<Movie> getTopViewWeek() {
+		List<Movie> list = new ArrayList<>();
+		String sql = "select top 10 * from movie order by view_week desc";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Movie m = new Movie();
+				m.setId(rs.getInt("id"));
+				m.setName(rs.getString("name"));
+				m.setOrigin_name(rs.getString("origin_name"));
+				m.setView_month(rs.getInt("view_month"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	}
 	
+	public List<Movie> getTopViewDay() {
+		List<Movie> list = new ArrayList<>();
+		String sql = "select top 10 * from movie order by view_day desc";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Movie m = new Movie();
+				m.setId(rs.getInt("id"));
+				m.setName(rs.getString("name"));
+				m.setOrigin_name(rs.getString("origin_name"));
+				m.setView_month(rs.getInt("view_month"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	}
+	
+	public int getTotalView() {
+		String sql = "select *  from movie_view ";
+		int view =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				view += rs.getInt("num_view");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return view;
+	}
+	
+	public int getTotalMovieError() {
+		String sql = "select id_movie  from movie_error ";
+		int view =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				view ++;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return view;
+	}
+	
+	public int getTotalMovie() {
+		String sql = "select id from movie";
+		int view =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				view ++;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return view;
+	}
+	
+	public int getTotalEpisode() {
+		String sql = "select id from episode";
+		int view =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				view ++;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return view;
+	}
+	
+	public int getTotalMember() {
+		String sql = "select username from member";
+		int view =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				view ++;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return view;
+	}
+	public int getTotalVisit() {
+		String sql = "select num_visit from visit";
+		int view =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				view ++;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return view;
+	}
 	public List<Movie> getByTopType(int id) {
 		List<Movie> list = new ArrayList<>();
 		String sql = "select Top 5 * from movie m join type t on m.type_id = t.id  where t.id = ? order by view_total desc";
@@ -560,7 +706,7 @@ public class MovieDAO extends DBContext {
 
 	public static void main(String[] args) {
 		System.out.println("run");
-
+		System.out.println(new MovieDAO().getTotalVisit());
 //		List<Movie> list = new MovieDAO().getByAllType(21314);
 //		List<Movie> movie = new MovieDAO().getListByPage(list, 24, 27);
 //		System.out.println(list.size());

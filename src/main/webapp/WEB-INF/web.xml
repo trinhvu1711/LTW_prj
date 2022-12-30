@@ -601,7 +601,7 @@
     <description></description>
     <display-name>UserProfileServlet</display-name>
     <servlet-name>UserProfileServlet</servlet-name>
-    <servlet-class>controller.UserProfileServlet</servlet-class>
+    <servlet-class>controller.profile.UserProfileServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserProfileServlet</servlet-name>
@@ -728,5 +728,92 @@
     <servlet-name>ChangeAvatar</servlet-name>
     <url-pattern>/ChangeAvatar</url-pattern>
     <url-pattern>/changeavatar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMovieErrorServlet</display-name>
+    <servlet-name>AddMovieErrorServlet</servlet-name>
+    <servlet-class>controller.movie.AddMovieErrorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMovieErrorServlet</servlet-name>
+    <url-pattern>/AddMovieErrorServlet</url-pattern>
+    <url-pattern>/addmovieerror</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MovieErrorServlet</display-name>
+    <servlet-name>MovieErrorServlet</servlet-name>
+    <servlet-class>controller.movie.MovieErrorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieErrorServlet</servlet-name>
+    <url-pattern>/MovieErrorServlet</url-pattern>
+    <url-pattern>/movieerror</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditMovieErrorServlet</display-name>
+    <servlet-name>EditMovieErrorServlet</servlet-name>
+    <servlet-class>controller.movie.EditMovieErrorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditMovieErrorServlet</servlet-name>
+    <url-pattern>/EditMovieErrorServlet</url-pattern>
+    <url-pattern>/editmovieerror</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdministrationServlet</display-name>
+    <servlet-name>AdministrationServlet</servlet-name>
+    <servlet-class>controller.profile.AdministrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdministrationServlet</servlet-name>
+    <url-pattern>/AdministrationServlet</url-pattern>
+    <url-pattern>/administration</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditAdministrationServler</display-name>
+    <servlet-name>EditAdministrationServler</servlet-name>
+    <servlet-class>controller.profile.EditAdministrationServler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditAdministrationServler</servlet-name>
+    <url-pattern>/EditAdministrationServler</url-pattern>
+    <url-pattern>/editadministration</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAdministrationServler</display-name>
+    <servlet-name>DeleteAdministrationServler</servlet-name>
+    <servlet-class>controller.profile.DeleteAdministrationServler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAdministrationServler</servlet-name>
+    <url-pattern>/DeleteAdministrationServler</url-pattern>
+    <url-pattern>/deleteadministration</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAdministrationServlet</display-name>
+    <servlet-name>AddAdministrationServlet</servlet-name>
+    <servlet-class>controller.profile.AddAdministrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAdministrationServlet</servlet-name>
+    <url-pattern>/AddAdministrationServlet</url-pattern>
+    <url-pattern>/addadministration</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StatisticalServlet</display-name>
+    <servlet-name>StatisticalServlet</servlet-name>
+    <servlet-class>controller.StatisticalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StatisticalServlet</servlet-name>
+    <url-pattern>/StatisticalServlet</url-pattern>
   </servlet-mapping>
 </web-app>

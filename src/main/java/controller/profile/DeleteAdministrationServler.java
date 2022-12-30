@@ -5,21 +5,20 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.User;
-
 import java.io.IOException;
 
+import dal.UserDAO;
+
 /**
- * Servlet implementation class ProfileServlet
+ * Servlet implementation class DeleteAdministrationServler
  */
-public class ProfileServlet extends HttpServlet {
+public class DeleteAdministrationServler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProfileServlet() {
+    public DeleteAdministrationServler() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +27,9 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		User u = (User) session.getAttribute("account");
-		if (u == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
-		String msg = (String) request.getSession().getAttribute("msg");
-		System.out.println(msg);
-		request.setAttribute("msg", msg);
-		request.setAttribute("account", u);
-		request.getRequestDispatcher("userprofile").forward(request, response);
+		String username = request.getParameter("username");
+		new UserDAO().delete(username);
+		request.getRequestDispatcher("administration").forward(request, response);
 	}
 
 	/**

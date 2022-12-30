@@ -24,7 +24,7 @@
 	margin-top: 8px;
 }
 
-input[type="text"] {
+input[type="text"],input[type="password"] {
 	background-color: #fff;
 	border: 1px solid rgba(0, 40, 100, .12);
 	border-radius: 3px;
@@ -54,7 +54,7 @@ input[type="text"] {
 	width: 100%;
 }
 
-.form-option, input[type=text]:focus {
+.form-option, input[type=text],input[type="password"]:focus {
 	background-color: #fff;
 	border-color: #9080f1;
 	box-shadow: 0 0 0 2px #e1dcfb;

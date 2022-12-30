@@ -48,7 +48,7 @@ public class UpdateProfileServlet extends HttpServlet {
 		if (nusername == null || nusername == "" || nname == null || nname == "") {
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", "nullError");
-			response.sendRedirect("profile");
+			response.sendRedirect("userprofile");
 			return;
 		}
 		UserDAO ud = new UserDAO();
@@ -57,8 +57,7 @@ public class UpdateProfileServlet extends HttpServlet {
 		User nuser = new User(nusername, pass, nname, 2);
 		HttpSession session = request.getSession();
 		session.setAttribute("account", nuser);
-	
-		response.sendRedirect("home");
+		request.getRequestDispatcher("userprofile").forward(request, response);
 
 	}
 

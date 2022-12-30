@@ -405,6 +405,25 @@
 			})
 
 			</script>
+			
+			<script type="text/javascript">
+			console.log("${msg}");	
+			if("${msg}" == 'nullError'){
+					alert("Thông tin nhập chưa đầy đủ hoặc sai định dạng");
+				}
+			if("${msg}" == 'notDuplicatecpass'){
+				alert("Mật khẩu xác nhận lại không khớp mới mật khẩu mới");
+			}
+			if("${msg}" == 'opassFail'){
+				alert("Mật khẩu cũ không đúng");
+			}
+			if("${msg}" == 'duplicateopass'){
+				alert("Mật khẩu mới trùng với mật khẩu cũ");
+			}
+			if("${msg}" == 'success'){
+				alert("Đổi mật khẩu thành công");
+			}
+			</script>
         </body>
 
         </html>

@@ -50,25 +50,25 @@ public class ChangePasswordProfileServlet extends HttpServlet {
 		if (rpass == null || rpass == "" || npass == null || npass == "" || opass == "" || opass == null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", "nullError");
-			response.sendRedirect("profile");
+			response.sendRedirect("userprofile");
 			return;
 		}
 		if (!rpass.equals(npass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", "notDuplicatecpass");
-			response.sendRedirect("profile");
+			response.sendRedirect("userprofile");
 			return;
 		}
 		if (npass.equals(opass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", "duplicateopass");
-			response.sendRedirect("profile");
+			response.sendRedirect("userprofile");
 			return;
 		}
 		if (ud.get(username, opass) == null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", "opassFail");
-			response.sendRedirect("profile");
+			response.sendRedirect("userprofile");
 			return;
 		} else {
 			User u = new User(username, npass, name, 2);
@@ -76,7 +76,7 @@ public class ChangePasswordProfileServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("account", u);
 			session.setAttribute("msg", "success");
-			response.sendRedirect("profile");
+			response.sendRedirect("userprofile");
 		}
 	}
 

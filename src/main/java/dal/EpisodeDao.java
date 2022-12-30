@@ -9,6 +9,7 @@ import java.util.List;
 import model.Actor;
 import model.Episode;
 import model.Movie;
+import model.Region;
 
 public class EpisodeDao extends DBContext {
 	public void addAll(Movie m) {
@@ -26,6 +27,18 @@ public class EpisodeDao extends DBContext {
 			} catch (SQLException e) {
 				System.out.println(e);
 			}
+		}
+	}
+	
+	public void edit(Episode ep) {
+		String sql = "update episode set link =? where id =?";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setString(1, ep.getLink());
+			st.setInt(2, ep.getId());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e);
 		}
 	}
 	
@@ -61,6 +74,26 @@ public class EpisodeDao extends DBContext {
 		return list;
 	}
 
+	public Episode getById(int id) {
+		String sql ="select * from episode where id=?";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Episode c = new Episode();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setSlug(rs.getString("slug"));
+				c.setLink(rs.getString("link"));
+				return c;
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		List<Episode> list = new EpisodeDao().get(893918);
 		for (Episode t : list) {

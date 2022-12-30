@@ -7,26 +7,11 @@
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta http-equiv="content-language" content="en" />
-        <meta name="robots" content="index,follow" />
-        <meta name="revisit-after" content="1 days" />
-        <meta name="ROBOTS" content="index,follow" />
-        <meta name="googlebot" content="index,follow" />
-        <meta name="BingBOT" content="index,follow" />
-        <meta name="yahooBOT" content="index,follow" />
-        <meta name="slurp" content="index,follow" />
-        <meta name="msnbot" content="index,follow" />
-        <meta name="csrf-token" content="eNLmFdTk4ozOXKx9QVfJBmy2jJdrvI8H5RF1C4R0">
-        <meta property="fb:app_id" content="" />
-        <link rel="shortcut icon" href="" type="image/png" />
+        
         <title>Xem phim ${movie.name} Vietsub HD</title>
      
         <link rel="canonical" href="view?id=${movie.id}" />
-        <link rel="prev" href="https://default.ophimcms.com" />
-    
-        <script
-            type="application/ld+json">{"@context":"https://schema.org","name":"Phim hay mới cập nhật 2022","description":"Ophim.TV","image":null}</script>
-        <script
-            type="application/ld+json">{"@context":"https://schema.org","@type":"episode","name":"Xem phim Thần Ấn Vương Toạ tập 01 Vietsub HD","description":"6000 năm trước, hoàng đế Ma Thần Phong Tú và 72 Ma Thần Trụ giáng xuống, tất cả sinh vật bị nhiễm hơi thở của Ma Thần Trụ, lập tức biến thành Ma Vật,...","url":"https://default.ophimcms.com/phim/than-an-vuong-toa/tap-01-239471","image":["https://default.ophimcms.com/storage/images/than-an-vuong-toa/than-an-vuong-toa-thumb.jpg","https://default.ophimcms.com/storage/images/than-an-vuong-toa/than-an-vuong-toa-poster.jpg"],"dateCreated":"2022-12-11T15:14:22.000000Z","director":""}</script>
+      
 
            <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css">
@@ -43,7 +28,7 @@
     <link rel="stylesheet" href="assets/css/style926f.css">
     <link rel="stylesheet" href="assets/css/responsivepv.css">
     <link rel="stylesheet" href="assets/css/custom926f.css">
-
+  	<link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
     <link rel="stylesheet" href="assets/css/comment.css">
     </head>
 
@@ -320,8 +305,8 @@
                                                         Phóng to </a>
                                                     <button style="margin-left: 5px;"
                                                         class="btn btn-default btn-rounded btn-yellow bp-btn-error"
-                                                        id="btn-toggle-error" title="Báo lỗi phim  ${movie.name}"
-                                                        href="#"> <i class="fa fa-warning"></i> Báo lỗi </button>
+                                                        id="btn-toggle-error" title="Báo lỗi phim ${movie.name}"
+                                                        > <i class="fa fa-warning"></i><a href="addmovieerror?id_movie=${movie.id}&tap=${tap}&id_episode=${episode.id}"> Báo lỗi</a> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -484,7 +469,6 @@
                                                                 </div>
                                                             </div>
                                                         </c:forEach>	
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -671,6 +655,27 @@
                 }, 'slow');
             });
         </script>
+
+		<script type="text/javascript">
+                const profile = document.querySelector(".profile");
+                const imgProfile = profile.querySelector("img");
+                const dropdownProfile = profile.querySelector(".profile-link");
+
+                imgProfile.addEventListener("click", function () {
+                    dropdownProfile.classList.toggle("show");
+                });
+
+                window.addEventListener("click", function (e) {
+                    if (e.target !== imgProfile) {
+                        if (e.target != dropdownProfile) {
+                            if (dropdownProfile.classList.contains("show")) {
+                                dropdownProfile.classList.remove("show");
+                            }
+                        }
+                    }
+                });
+
+            </script>
 
         <script>
             var episode_id = 239471;

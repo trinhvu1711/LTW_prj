@@ -1,28 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dashboard</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
 <link rel="stylesheet" href="">
 <link rel="stylesheet" href="asserts/css/style.css">
+<link rel="stylesheet" href="asserts/css/profile.css">
+<title>Add category</title>
 </head>
 <body>
+
+	</section>
 	<!--SIDE BAR-->
 	<section id="sidebar">
 		<a href="#" class="brand"><img src="./asserts/img/Logo.png" alt="">VPMovie</a>
 		<ul class="side-menu">
-			<li><a href="dashboard" class="active"><i
-					class="las la-home icon"></i>Dashboard</a></li>
+			<li><a href="./Dashboard.html"><i class="las la-home icon"></i>Dashboard</a></li>
 			<li class="divider">Phim</li>
 			<li>
-			<li><a href="movie"><i
+			<li><a href="./movies.html"><i
 					class="las la-play-circle icon"></i>Danh sách phim</a></li>
 			<li><a href="#"><i class="las la-list icon"></i></i>Phân loại <i
 					class="las la-angle-left icon-right icon"></i></a>
@@ -38,18 +39,39 @@
 					<li><a href="studio"><i class="lab la-connectdevelop icon"></i>
 							Studio</a></li>
 				</ul></li>
-			<li><a href="movieerror"><i class="las la-info-circle icon"></i></i>Phim
+			<li><a href="#"><i class="las la-info-circle icon"></i></i>Phim
 					lỗi</a></li>
 
 			</li>
+
+			<li class="divider">Tùy chỉnh</li>
+			<li>
+			<li><a href="#"><i class="las la-paint-brush icon"></i>Giao
+					diện <i class="las la-angle-left icon-right icon"></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#">Chủ đề</a></li>
+					<li><a href="#">Menu</a></li>
+				</ul></li>
+			<li><a href="#"><i class="las la-cog icon"></i></i>Cài đặt <i
+					class="las la-angle-left icon-right icon"></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#">General</a></li>
+					<li><a href="#">Seo</a></li>
+					<li><a href="#">Jwplayer</a></li>
+					<li><a href="#">Khác</a></li>
+				</ul></li>
+			<li><a href="#"><i class="las la-map icon"></i></i>Sitemap</a></li>
+
+			</li>
+
 			<li class="divider">Mở rộng</li>
 			<li>
-			<li><a href="#"><i class="las la-play-circle icon"></i>Thống kê</a></li>
+			<li><a href="#"><i class="las la-play-circle icon"></i>Crawler</a></li>
 			</li>
 
 			<li class="divider">Administration</li>
 			<li>
-			<li><a href="administration"><i class="las la-users icon"></i>Authentication</a></li>
+			<li><a href="#"><i class="las la-users icon"></i>Authentication</a></li>
 			</li>
 		</ul>
 
@@ -66,9 +88,9 @@
 				<ul class="profile-link">
 					<li><a href="#"><i class="las la-user-circle icon"></i>
 							Profile</a></li>
-					<li><a href="profile"><i class="las la-user-cog icon"></i>
+					<li><a href="#"><i class="las la-user-cog icon"></i>
 							Settings</a></li>
-					<li><a href="logout"><i class="las la-sign-out-alt icon"></i>
+					<li><a href="#"><i class="las la-sign-out-alt icon"></i>
 							Logout</a></li>
 				</ul>
 			</div>
@@ -77,27 +99,52 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<div class="heading">
+				<h1 class="title">Categories</h1>
+				<h4>
+					Add category. <a href="">Back to all categories</a>
+				</h4>
+			</div>
 			<ul class="breadcrumbs">
 				<li><a href="#">Home</a></li>
 				<li class="divider">/</li>
-				<li><a href="#" class="active">Dashboard</a></li>
+				<li><a href="#">Categories</a></li>
+				<li class="divider">/</li>
+				<li><a href="#" class="active">Add</a></li>
 			</ul>
-
-
 		</main>
-
-		<div class="jumbotron">
-			<h1>Hello Admin, Welcome!</h1>
-			<p>Sử dụng sidebar bên trái để tạo, chỉnh sửa hoặc xóa.</p>
-			<p class="lead">
-				<a href="logout" class="btn btn-primary">Logout</a>
-			</p>
-		</div>
+		
 		<!-- MAIN -->
+		<form action="editmovieerror" method="post">
+			<div class="card">
+				<div class="card-heading">
+					<div>
+						<input type="hidden" value="${m.id_episode}" name="id_episode" >
+						<label for="">Nguồn phát</label> <input type="text" name="link"
+							class="mt-8" value="${m.link}">
+				
+							<input type="checkbox" checked="checked" name="isError">
+							<label>Đánh dẫu đang lỗi</label>
+					
+					</div>
+					
+				</div>
+				<div class="card-footer">
+					<button class="lead" type="submit">
+						
+						<div class="btn btn-teal"><i
+							class="las la-save"></i> Save</div>
+					</button>
+					<button class="lead" type="reset">
+						<a href="#" class="btn btn-gray">Cancel</a>
+					</button>
+				</div>
+			</div>
+		</form>
+
 	</section>
+
 	<!-- CONTENT -->
-	
 	<script src="asserts/js/script.js"></script>
 </body>
 </html>

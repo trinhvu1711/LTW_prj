@@ -72,9 +72,11 @@ public class ViewServlet extends HttpServlet {
 		request.setAttribute("topphimbo", topphimbo);
 		request.setAttribute("topphimle", topphimle);
 		
-		System.out.println("run");
+//		System.out.println("run");
 		String id_raw = request.getParameter("id");
 		String xtap = request.getParameter("tap");
+		System.out.println("id "+id_raw);
+		System.out.println("tap "+xtap);
 		int tap, num;
 		try {
 			if (xtap == null ) tap = 0;

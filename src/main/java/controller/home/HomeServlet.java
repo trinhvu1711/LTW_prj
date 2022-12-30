@@ -39,8 +39,6 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int count = (int) request.getSession().getAttribute("c");
-//		request.getSession().setAttribute("count", count);
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("account");
 		if (u != null) {

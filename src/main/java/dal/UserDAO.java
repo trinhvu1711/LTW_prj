@@ -25,6 +25,17 @@ public class UserDAO extends DBContext {
 		}
 		return list;
 	}
+	
+	public void delete(String username) {
+		String sql = "delete from member where username =?";
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setString(1, username);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+	}
 
 	public User get(String username, String password) {
 		User u = null;
