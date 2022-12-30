@@ -17,7 +17,7 @@ Sử dụng HTML, JSP, CSS, JS, Servlet, JQuery, Microsoft SQL .
 * Xem các thuộc tính của phim
 * Xem thống kê phim 
 #### Đăng nhập tài khoản người dùng:
-* Đổi thông tin tài khoản, ảnh đại 
+* Đổi thông tin tài khoản, ảnh đại diện
 * Theo dõi phim
 * Sửa, xóa phim đã theo dõi, báo cáo phim lỗi
 * Lịch sử xem
