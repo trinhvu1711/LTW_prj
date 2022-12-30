@@ -77,7 +77,12 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("account", u);
-			response.sendRedirect("home");
+			if (u.getRole() == 2) {
+				response.sendRedirect("home");
+			}
+			else {
+				response.sendRedirect("dashboard");
+			}
 		}
 	}
 

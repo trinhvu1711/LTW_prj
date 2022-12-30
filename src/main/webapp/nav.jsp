@@ -16,7 +16,7 @@
 		<body>
 			<!--SIDE BAR-->
 			<section id="sidebar">
-				<a href="#" class="brand"><img src="./asserts/img/Logo.png" alt="">VPMovie</a>
+				<a href="/home" class="brand"><img src="./asserts/img/Logo.png" alt="">VPMovie</a>
 				<ul class="side-menu">
 					<li><a href="dashboard" class="active"><i class="las la-home icon"></i>Dashboard</a></li>
 					<li class="divider">Phim</li>

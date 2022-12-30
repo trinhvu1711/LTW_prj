@@ -395,19 +395,6 @@
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <filter>
-    <display-name>CountFilter</display-name>
-    <filter-name>CountFilter</filter-name>
-    <filter-class>filter.CountFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>CountFilter</filter-name>
-    <url-pattern>/CountFilter</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>CountFilter</filter-name>
-    <servlet-name>HomeServlet</servlet-name>
-  </filter-mapping>
-  <filter>
     <display-name>CookieFilter</display-name>
     <filter-name>CookieFilter</filter-name>
     <filter-class>filter.CookieFilter</filter-class>

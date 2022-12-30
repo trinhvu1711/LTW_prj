@@ -4,6 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Actor;
 import model.Category;
 import model.Director;
@@ -14,6 +15,7 @@ import model.Status;
 import model.Studio;
 import model.Tag;
 import model.Type;
+import model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,6 +58,13 @@ public class AddMovieServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("account");
+		if (u == null) {
+			response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
+		request.setAttribute("account", u);
 		CategoryDAO td = new CategoryDAO();
 		RegionDao rd = new RegionDao();
 		DirectorDao dd = new DirectorDao();
@@ -94,7 +103,7 @@ public class AddMovieServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = (int) (Math.floor(Math.random() * 899999) + 100000);
+		int id = new MovieDAO().getLowerId()-1;
 		CategoryDAO categoryDAO = new CategoryDAO();
 		TypeDAO typeDAO = new TypeDAO();
 		DirectorDao directorDao = new DirectorDao();

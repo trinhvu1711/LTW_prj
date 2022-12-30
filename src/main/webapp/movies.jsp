@@ -173,7 +173,7 @@
 											<td class="p-12">
 												<div class="actions">
 													<p class="lead">
-														<a href="#" class="btn btn-primary"><i class="las la-eye"></i>
+														<a href="detail?id=${m.id}" class="btn btn-primary"><i class="las la-eye"></i>
 															View</a>
 													</p>
 													<p class="lead">

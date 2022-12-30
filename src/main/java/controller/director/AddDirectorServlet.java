@@ -5,8 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Actor;
 import model.Director;
+import model.User;
 
 import java.io.IOException;
 
@@ -31,6 +33,13 @@ public class AddDirectorServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("account");
+		if (u == null) {
+			response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
+		request.setAttribute("account", u);
 		request.getRequestDispatcher("addDirector.jsp").forward(request, response);
 	}
 

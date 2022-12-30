@@ -39,15 +39,16 @@ public class FilmFollowServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		int count = (int) request.getSession().getAttribute("c");
+		
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("account");
 		if (u == null) {
 			response.sendRedirect(request.getContextPath()+"/login");
 			return;
 		}
+		request.setAttribute("account", u);
 		ImageProfile imageProfile = new ImageProfileDao().getImage(u.getUsername());;
 		request.setAttribute("image", imageProfile);
-		request.setAttribute("account", u);
 //		request.getSession().setAttribute("count", count);
 		
 		CategoryDAO td = new CategoryDAO();

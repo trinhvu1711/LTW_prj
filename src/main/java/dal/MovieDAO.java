@@ -74,6 +74,20 @@ public class MovieDAO extends DBContext {
 
 	}
 
+	public int getLowerId() {
+		String sql = "  select * from movie where id <= all (select id from movie) order by id asc";
+		int result =0;
+		try {
+			PreparedStatement st = connection.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			rs.next();
+			result =rs.getInt("id");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return result;
+	}
+	
 	public Movie get(int id) {
 		String sql = "select * from movie where id=?";
 		Movie m = new Movie();
@@ -706,7 +720,7 @@ public class MovieDAO extends DBContext {
 
 	public static void main(String[] args) {
 		System.out.println("run");
-		System.out.println(new MovieDAO().getTotalVisit());
+		System.out.println(new MovieDAO().getLowerId());
 //		List<Movie> list = new MovieDAO().getByAllType(21314);
 //		List<Movie> movie = new MovieDAO().getListByPage(list, 24, 27);
 //		System.out.println(list.size());
