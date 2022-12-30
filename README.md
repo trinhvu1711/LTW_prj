@@ -26,4 +26,7 @@ Sử dụng HTML, JSP, CSS, JS, Servlet, JQuery, Microsoft SQL .
 * Thêm chức năng lọc phim
 * Search
 * hiển thị lượt xem, lượt truy cập
-
+#### Demo
+![image](https://user-images.githubusercontent.com/81180330/210088095-504b3694-4d09-4adb-a936-b34be53655d3.png)
+![image](https://user-images.githubusercontent.com/81180330/210088146-8ff522b8-29f9-4eb2-a8d2-6eef1d7198a0.png)
+![image](https://user-images.githubusercontent.com/81180330/210088166-c71aef91-969f-452b-a151-8b091bb99ed5.png)
