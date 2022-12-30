@@ -56,7 +56,7 @@
             <link rel="stylesheet" href="assets/css/style926f.css?ver=2.45">
             <link rel="stylesheet" href="assets/css/responsivepv.css">
             <link rel="stylesheet" href="assets/css/custom926f.css?ver=2.45">
-   			<link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
+            <link rel="stylesheet" href="asserts/font/line-awesome-1.3.0/1.3.0/css/line-awesome.css">
 
         </head>
 
@@ -131,9 +131,9 @@
                             <div class="navbar-cell stretch">
                                 <div class="profile">
                                     <c:set value="${image.path}" var="link"></c:set>
-									<c:if test="${(link == null) || (link == '')}">
-										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
-									</c:if>
+                                    <c:if test="${(link == null) || (link == '')}">
+                                        <c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+                                    </c:if>
                                     <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
@@ -154,8 +154,8 @@
             <div class="sb-slidebar sb-left">
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="showintheater" class="dropdown-toggle" data-toggle="dropdown"
-                            title="Chiếu rạp">Chiếu rạp</a>
+                        <a href="showintheater" class="dropdown-toggle" data-toggle="dropdown" title="Chiếu rạp">Chiếu
+                            rạp</a>
                     </li>
                     <li class="">
                         <a href="/" class="dropdown-toggle" data-toggle="dropdown" title="Trang chủ">Trang chủ</a>
@@ -263,15 +263,14 @@
                                                 <select class="form-control" name="year" form="form-search">
                                                     <option value="">Tất cả năm</option>
                                                     <c:forEach var="i" begin="0" end="108">
-                                                        <c:set var="decr" value="${2022 - i}"/>
+                                                        <c:set var="decr" value="${2022 - i}" />
                                                         <option value="${decr}">
                                                             ${decr}</option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <select class="form-control" id="sort" name="sort"
-                                                    form="form-search">
+                                                <select class="form-control" id="sort" name="sort" form="form-search">
                                                     <option value="">Sắp xếp</option>
                                                     <option value="created">Thời gian đăng</option>
                                                     <option value="publish_year">Năm sản xuất</option>
@@ -279,8 +278,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <select class="form-control" id="type" name="type"
-                                                    form="form-search">
+                                                <select class="form-control" id="type" name="type" form="form-search">
                                                     <option value="">Mọi định dạng</option>
                                                     <option value="23432">Phim bộ</option>
                                                     <option value="21314">Phim lẻ</option>
@@ -552,7 +550,7 @@
                     <img src="" alt="">
                 </div>
             </div>
-			<script type="text/javascript">
+            <script type="text/javascript">
                 const profile = document.querySelector(".profile");
                 const imgProfile = profile.querySelector("img");
                 const dropdownProfile = profile.querySelector(".profile-link");

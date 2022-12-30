@@ -4,7 +4,7 @@
         <html lang="en">
 
         <head>
- 
+
             <link rel="shortcut icon" href="" type="image/png" />
             <title>Phim hay mới cập nhật 2022</title>
             <link rel="stylesheet" href="assets/libs/bootstrap-3.3.6/css/bootstrap.min.css">
@@ -97,9 +97,9 @@
                             <div class="navbar-cell stretch">
                                 <div class="profile">
                                     <c:set value="${image.path}" var="link"></c:set>
-									<c:if test="${(link == null) || (link == '')}">
-										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
-									</c:if>
+                                    <c:if test="${(link == null) || (link == '')}">
+                                        <c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+                                    </c:if>
                                     <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>

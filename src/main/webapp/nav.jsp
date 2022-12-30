@@ -53,47 +53,6 @@
 
 			</section>
 			<!--SIDE BAR-->
-
-			<!-- CONTENT -->
-			<section id="content">
-				<!-- NAVBAR -->
-				<nav>
-					<i class="las la-bars toggle-sidebar"></i> <span class="divider"></span>
-					<div class="profile">
-						<img src="./asserts/img/admin.png" alt="">
-						<ul class="profile-link">
-							<li><a href="#"><i class="las la-user-circle icon"></i>
-									Profile</a></li>
-							<li><a href="profile"><i class="las la-user-cog icon"></i>
-									Settings</a></li>
-							<li><a href="logout"><i class="las la-sign-out-alt icon"></i>
-									Logout</a></li>
-						</ul>
-					</div>
-				</nav>
-				<!-- NAVBAR -->
-
-				<!-- MAIN -->
-				<main>
-					<h1 class="title">Dashboard</h1>
-					<ul class="breadcrumbs">
-						<li><a href="#">Home</a></li>
-						<li class="divider">/</li>
-						<li><a href="#" class="active">Dashboard</a></li>
-					</ul>
-
-
-				</main>
-
-				<div class="jumbotron">
-					<h1>Hello Admin, Welcome!</h1>
-					<p>Sử dụng sidebar bên trái để tạo, chỉnh sửa hoặc xóa.</p>
-					<p class="lead">
-						<a href="logout" class="btn btn-primary">Logout</a>
-					</p>
-				</div>
-				<!-- MAIN -->
-			</section>
 			<!-- CONTENT -->
 
 			<script src="asserts/js/script.js"></script>

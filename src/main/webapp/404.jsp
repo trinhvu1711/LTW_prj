@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+   <!DOCTYPE html>
+   <!-- Created By CodingNepal -->
+   <html lang="en" dir="ltr">
+
    <head>
       <meta charset="utf-8">
       <title>404 Error Page</title>
       <link rel="stylesheet" href="asserts/css/404page.css">
    </head>
+
    <body>
       <div id="error-page">
          <div class="content">
@@ -27,4 +28,5 @@
          </div>
       </div>
    </body>
-</html>
+
+   </html>

@@ -815,5 +815,6 @@
   <servlet-mapping>
     <servlet-name>StatisticalServlet</servlet-name>
     <url-pattern>/StatisticalServlet</url-pattern>
+    <url-pattern>/statistical</url-pattern>
   </servlet-mapping>
 </web-app>

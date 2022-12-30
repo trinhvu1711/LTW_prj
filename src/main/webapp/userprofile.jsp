@@ -94,9 +94,9 @@
                             <div class="navbar-cell stretch">
                                 <div class="profile">
                                     <c:set value="${image.path}" var="link"></c:set>
-									<c:if test="${(link == null) || (link == '')}">
-										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
-									</c:if>
+                                    <c:if test="${(link == null) || (link == '')}">
+                                        <c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+                                    </c:if>
                                     <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
@@ -215,19 +215,20 @@
                                 </div>
                             </div>
                             <!-- MAIN -->
-                           <form action="changeavatar" method="post" enctype="multipart/form-data">
+                            <form action="changeavatar" method="post" enctype="multipart/form-data">
                                 <div class="card">
                                     <div class="card-heading">Đổi ảnh đại diện</div>
                                     <div class="card-body">
-                                        <div class="card-item"> 
-                                           	<div class="user-avatar">
-												<c:set value="${image.path}" var="link"></c:set>
-												<c:if test="${(link == null) || (link == '')}">
-													<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
-												</c:if>
-												<img class="user-avatar-img" alt="" src="${link}">
-											</div>
-											<input type="file" id="file" name="file" accept="image/jpeg, image/png, image/jpg">
+                                        <div class="card-item">
+                                            <div class="user-avatar">
+                                                <c:set value="${image.path}" var="link"></c:set>
+                                                <c:if test="${(link == null) || (link == '')}">
+                                                    <c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+                                                </c:if>
+                                                <img class="user-avatar-img" alt="" src="${link}">
+                                            </div>
+                                            <input type="file" id="file" name="file"
+                                                accept="image/jpeg, image/png, image/jpg">
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -242,8 +243,8 @@
                                     </div>
                                 </div>
                             </form>
-                           
-                           
+
+
                             <form action="updateProfile" method="post">
                                 <div class="card">
                                     <div class="card-heading">Cập nhật thông tin</div>
@@ -394,36 +395,36 @@
             <script src="assets/js/core.min.js"></script>
             <script src="assets/js/toastr.min.js"></script>
             <script src="assets/js/function.js"></script>
-			<script type="text/javascript">
-			const file = document.querySelector("#file")
-			file.addEventListener("change", function() {
-			  const reader = new FileReader()
-			  reader.addEventListener("load", () => {
-			    document.querySelector(".user-avatar-img").src = reader.result
-			  })
-			  reader.readAsDataURL(this.files[0]);
-			})
+            <script type="text/javascript">
+                const file = document.querySelector("#file")
+                file.addEventListener("change", function () {
+                    const reader = new FileReader()
+                    reader.addEventListener("load", () => {
+                        document.querySelector(".user-avatar-img").src = reader.result
+                    })
+                    reader.readAsDataURL(this.files[0]);
+                })
 
-			</script>
-			
-			<script type="text/javascript">
-			console.log("${msg}");	
-			if("${msg}" == 'nullError'){
-					alert("Thông tin nhập chưa đầy đủ hoặc sai định dạng");
-				}
-			if("${msg}" == 'notDuplicatecpass'){
-				alert("Mật khẩu xác nhận lại không khớp mới mật khẩu mới");
-			}
-			if("${msg}" == 'opassFail'){
-				alert("Mật khẩu cũ không đúng");
-			}
-			if("${msg}" == 'duplicateopass'){
-				alert("Mật khẩu mới trùng với mật khẩu cũ");
-			}
-			if("${msg}" == 'success'){
-				alert("Đổi mật khẩu thành công");
-			}
-			</script>
+            </script>
+
+            <script type="text/javascript">
+                console.log("${msg}");
+                if ("${msg}" == 'nullError') {
+                    alert("Thông tin nhập chưa đầy đủ hoặc sai định dạng");
+                }
+                if ("${msg}" == 'notDuplicatecpass') {
+                    alert("Mật khẩu xác nhận lại không khớp mới mật khẩu mới");
+                }
+                if ("${msg}" == 'opassFail') {
+                    alert("Mật khẩu cũ không đúng");
+                }
+                if ("${msg}" == 'duplicateopass') {
+                    alert("Mật khẩu mới trùng với mật khẩu cũ");
+                }
+                if ("${msg}" == 'success') {
+                    alert("Đổi mật khẩu thành công");
+                }
+            </script>
         </body>
 
         </html>

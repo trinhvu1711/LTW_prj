@@ -98,9 +98,9 @@
                             <div class="navbar-cell stretch">
                                 <div class="profile">
                                     <c:set value="${image.path}" var="link"></c:set>
-									<c:if test="${(link == null) || (link == '')}">
-										<c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
-									</c:if>
+                                    <c:if test="${(link == null) || (link == '')}">
+                                        <c:set value="./assets/images/defaultavatar.jpg" var="link"></c:set>
+                                    </c:if>
                                     <img src="${link}" alt="">
                                     <ul class="profile-link">
                                         <li><a href="userprofile"><i class="las la-user-circle icon"></i>
@@ -199,7 +199,7 @@
                                     <li class="">
                                         <a title="Thông tin">
                                             <span class="breadcrumb_last">
-                                               Phim đã coi
+                                                Phim đã coi
                                             </span>
                                         </a>
                                         <meta itemprop="position" content="3">
@@ -210,7 +210,7 @@
                             <div class="block">
                                 <div class="block-heading with-tabs">
                                     <div class="block-title">
-                                        <h2 class="block-title"><i class="las la-history"></i>  Phim đã xem</h2>
+                                        <h2 class="block-title"><i class="las la-history"></i> Phim đã xem</h2>
                                     </div>
                                 </div>
                                 <div class="block-content">
